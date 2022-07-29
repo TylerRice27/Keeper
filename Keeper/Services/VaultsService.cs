@@ -1,12 +1,22 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Keeper.Models;
+using Keeper.Repositories;
 
 namespace Keeper.Services
 {
+
     public class VaultsService
     {
-        
+        private readonly VaultsRepository _repo;
+
+        public VaultsService(VaultsRepository repo)
+        {
+            _repo = repo;
+        }
+
+        internal List<Vault> Get()
+        {
+            return _repo.Get();
+        }
     }
 }
