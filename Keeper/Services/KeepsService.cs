@@ -48,5 +48,11 @@ namespace Keeper.Services
 
 
         }
+
+        internal void Delete(int id)
+        {
+            Keep foundKeep = Get(id);
+            _repo.Delete(id);
+        }
     }
 }
