@@ -14,9 +14,16 @@ namespace Keeper.Services
             _repo = repo;
         }
 
-        internal List<Vault> Get()
+        internal List<Vault> Get(string userId)
         {
-            return _repo.Get();
+            List<Vault> vaults = _repo.Get();
+            return vaults;
+
+        }
+
+        internal Vault Create(Vault vaultData)
+        {
+            return _repo.Create(vaultData);
         }
     }
 }
