@@ -40,5 +40,18 @@ namespace Keeper.Repositories
             string sql = "SELECT * FROM keeps";
             return _db.Query<Keep>(sql).ToList();
         }
+
+        internal void Edit(Keep original)
+        {
+            string sql = @"
+            UPDATE keeps
+            SET 
+            name = @Name,
+            description = @Description,
+            img = @Img
+            WHERE id =@Id;";
+
+            _db.Execute(sql, original);
+        }
     }
 }

@@ -35,5 +35,18 @@ namespace Keeper.Services
 
             return foundKeep;
         }
+
+        internal Keep Edit(Keep keep)
+        {
+            Keep original = Get(keep.Id);
+            original.Name = keep.Name ?? original.Name;
+            original.Description = keep.Description ?? original.Description;
+            original.Img = keep.Img ?? original.Img;
+
+            _repo.Edit(original);
+            return original;
+
+
+        }
     }
 }

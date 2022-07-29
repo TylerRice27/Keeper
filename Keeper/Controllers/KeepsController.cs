@@ -82,5 +82,26 @@ namespace Keeper.Controllers
 
 
         }
+
+        [HttpPut("{id}")]
+        [Authorize]
+
+        public ActionResult<Keep> Edit([FromBody] Keep keep, int id)
+        {
+            try
+            {
+                keep.Id = id;
+                Keep editKeep = _ks.Edit(keep);
+                return Ok(editKeep);
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+
+        }
     }
 }
