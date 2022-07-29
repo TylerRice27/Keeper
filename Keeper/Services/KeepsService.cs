@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Keeper.Models;
 using Keeper.Repositories;
@@ -22,6 +23,17 @@ namespace Keeper.Services
         internal List<Keep> Get()
         {
             return _repo.Get();
+        }
+
+        internal Keep Get(int id)
+        {
+            Keep foundKeep = _repo.Get(id);
+            if (foundKeep == null)
+            {
+                throw new Exception("Invaild Id");
+            }
+
+            return foundKeep;
         }
     }
 }

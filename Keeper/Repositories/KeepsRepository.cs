@@ -29,6 +29,12 @@ namespace Keeper.Repositories
 
         }
 
+        internal Keep Get(int id)
+        {
+            string sql = "SELECT * FROM keeps WHERE id =@id";
+            return _db.QueryFirstOrDefault<Keep>(sql, new { id });
+        }
+
         internal List<Keep> Get()
         {
             string sql = "SELECT * FROM keeps";
