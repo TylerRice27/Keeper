@@ -20,9 +20,10 @@ namespace Keeper.Services
             return _repo.Create(keepData);
         }
 
-        internal List<Keep> Get()
+        internal List<Keep> Get(string userId)
         {
-            return _repo.Get();
+            List<Keep> keeps = _repo.Get();
+            return keeps;
         }
 
         internal Keep Get(int id)

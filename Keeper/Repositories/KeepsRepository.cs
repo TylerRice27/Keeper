@@ -31,14 +31,32 @@ namespace Keeper.Repositories
 
         internal Keep Get(int id)
         {
-            string sql = "SELECT * FROM keeps WHERE id =@id";
-            return _db.QueryFirstOrDefault<Keep>(sql, new { id });
+            string sql = @"
+            SELECT
+            a.*,
+            k.*
+            FROM keeps k
+            JOIN accounts a ON a.id = k.creatorId
+            WHERE k.id = @id";
+            return _db.Query<Profile, Keep, Keep>(sql, (prof, keep) =>
+            {
+                keep.Creator = prof;
+                return keep;
+            }, new { id }).FirstOrDefault();
         }
 
         internal List<Keep> Get()
         {
-            string sql = "SELECT * FROM keeps";
-            return _db.Query<Keep>(sql).ToList();
+            string sql = @"SELECT 
+            a.*,
+            k.* 
+            FROM keeps k
+            JOIN accounts a ON a.id = k.creatorId;";
+            return _db.Query<Profile, Keep, Keep>(sql, (prof, keep) =>
+            {
+                keep.Creator = prof;
+                return keep;
+            }).ToList();
         }
 
         internal void Edit(Keep original)

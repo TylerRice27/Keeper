@@ -46,12 +46,13 @@ namespace Keeper.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Keep>> Get()
+        public async Task<ActionResult<List<Keep>>> GetAsync()
         {
             try
             {
 
-                List<Keep> keep = _ks.Get();
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+                List<Keep> keep = _ks.Get(userInfo?.Id);
                 return Ok(keep);
 
             }
