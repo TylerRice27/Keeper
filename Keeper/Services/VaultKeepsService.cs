@@ -7,10 +7,12 @@ namespace Keeper.Services
 {
     public class VaultKeepsService
     {
+        private readonly VaultsRepository _vr;
         private readonly VaultKeepsRepository _repo;
 
-        public VaultKeepsService(VaultKeepsRepository repo)
+        public VaultKeepsService(VaultsRepository vr, VaultKeepsRepository repo)
         {
+            _vr = vr;
             _repo = repo;
         }
 
@@ -26,17 +28,26 @@ namespace Keeper.Services
         internal List<VaultKeepViewModel> GetByVaultId(int id, string userId)
         {
 
-            // VaultKeep found = _repo.Get(id);
-            // if (found == null)
+            // Vault vaults = _vr.Get(id);
+
+            // List<VaultKeepViewModel> keeps = _repo.GetByVaultId(id);
+            // VaultKeep vk = _repo.GetByVaultId(id);
+
+            // return keeps.FindAll(k => k.VaultKeepId && vaults.IsPrivate == false || k.CreatorId == userId);
+            // if (keeps == null)
             // {
             //     throw new Exception("Invalid ID");
             // }
-            // if (found && found.CreatorId != userId)
+            // if (keeps. != userId)
             // {
             //     throw new Exception("This is Private");
 
             // }
-            // return found;
+
+
+            // return keeps;
+
+
 
 
             return _repo.GetByVaultId(id);
@@ -57,5 +68,7 @@ namespace Keeper.Services
             }
             _repo.Delete(id);
         }
+
+
     }
 }
