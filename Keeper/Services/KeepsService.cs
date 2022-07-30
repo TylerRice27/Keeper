@@ -50,6 +50,11 @@ namespace Keeper.Services
 
         }
 
+        internal List<Keep> GetKeepsByCreatorId(string id)
+        {
+            return _repo.GetAllKeepsByCreatorId(id);
+        }
+
         internal void Delete(int id)
         {
             Keep foundKeep = Get(id);
