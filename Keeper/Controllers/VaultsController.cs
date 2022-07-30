@@ -129,11 +129,15 @@ namespace Keeper.Controllers
 
         [HttpGet("{id}/keeps")]
 
-        public ActionResult<List<Vault>> GetKeeps(int id)
+        public async Task<ActionResult<List<Vault>>> GetKeeps(int id)
         {
+
+
             try
             {
-                List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id);
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+                List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id, userInfo?.Id);
+
                 return Ok(keeps);
 
             }
@@ -143,7 +147,23 @@ namespace Keeper.Controllers
                 return BadRequest(e.Message);
             }
 
+
+
+
+            // try
+            // {
+            //     List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id);
+            //     return Ok(keeps);
+
+            // }
+            // catch (Exception e)
+            // {
+
+            //     return BadRequest(e.Message);
+            // }
+
         }
+
 
     }
 }

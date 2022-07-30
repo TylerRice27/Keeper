@@ -19,8 +19,22 @@ namespace Keeper.Services
             return _repo.Create(vaultKeepData);
         }
 
-        internal List<VaultKeepViewModel> GetByVaultId(int id)
+        internal List<VaultKeepViewModel> GetByVaultId(int id, string userId)
         {
+
+            // VaultKeep found = _repo.Get(id);
+            // if (found == null)
+            // {
+            //     throw new Exception("Invalid ID");
+            // }
+            // if (found && found.CreatorId != userId)
+            // {
+            //     throw new Exception("This is Private");
+
+            // }
+            // return found;
+
+
             return _repo.GetByVaultId(id);
         }
 

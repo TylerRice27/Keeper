@@ -13,11 +13,17 @@ namespace Keeper.Services
 
         private readonly VaultsRepository _repo;
 
-        public VaultsService(AccountService acs, VaultsRepository repo)
+        private readonly VaultKeepsRepository _vksRepo;
+
+        public VaultsService(AccountService acs, VaultsRepository repo, VaultKeepsRepository vksRepo)
         {
             _acs = acs;
             _repo = repo;
+            _vksRepo = vksRepo;
         }
+
+
+
 
         // internal List<Vault> Get()
         // {
@@ -50,7 +56,13 @@ namespace Keeper.Services
             }
             if (found.IsPrivate && found.CreatorId != userId)
             {
-                throw new Exception("This is Private");
+                VaultKeep vaultKeep = _vksRepo.GetKeeps(id, userId);
+
+                if (vaultKeep == null)
+                {
+
+                    throw new Exception("This is Private");
+                }
 
             }
             return found;

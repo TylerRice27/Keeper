@@ -54,6 +54,15 @@ namespace Keeper.Repositories
             return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
         }
 
+        internal VaultKeep GetKeeps(int id, string userId)
+        {
+            string sql = @"
+            SELECT * FROM keeps
+            WHERE vaultId = @id AND creatorId = @userId
+            ";
+            return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id, userId });
+        }
+
         internal void Delete(int id)
         {
             string sql = "DELETE FROM vaultkeeps WHERE id = @Id LIMIT 1";
