@@ -49,32 +49,34 @@ namespace Keeper.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Vault>>> Get()
-        {
+        // [HttpGet]
+        // public async Task<ActionResult<List<Vault>>> Get()
+        // {
 
+        //     try
+        //     {
+        //         Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
+        //         List<Vault> vaults = _vs.Get();
+        //         return Ok(vaults);
+        //     }
+        //     catch (Exception e)
+        //     {
+
+        //         return BadRequest(e.Message);
+        //     }
+
+
+        // }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Vault>> GetAsync(int id)
+        {
             try
             {
                 Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
 
-                List<Vault> vaults = _vs.Get(userInfo?.Id);
-                return Ok(vaults);
-            }
-            catch (Exception e)
-            {
-
-                return BadRequest(e.Message);
-            }
-
-
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Vault> Get(int id)
-        {
-            try
-            {
-                Vault vault = _vs.Get(id);
+                Vault vault = _vs.GetPrivateVaults(id, userInfo?.Id);
                 return Ok(vault);
 
             }

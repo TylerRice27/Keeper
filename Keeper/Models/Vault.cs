@@ -8,7 +8,7 @@ namespace Keeper.Models
 
         public string Description { get; set; }
 
-        public bool? IsPrivate { get; set; }
+        public bool IsPrivate { get; set; }
 
         public string CreatorId { get; set; }
 
