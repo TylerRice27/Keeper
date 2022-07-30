@@ -113,7 +113,7 @@ namespace Keeper.Controllers
             try
             {
                 _ks.Delete(id);
-                return Ok("Deleted");
+                return Ok("Deleted Keep");
             }
             catch (Exception e)
             {

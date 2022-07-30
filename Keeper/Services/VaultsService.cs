@@ -47,5 +47,11 @@ namespace Keeper.Services
             _repo.Edit(original);
             return original;
         }
+
+        internal void Delete(int id)
+        {
+            Vault foundVault = Get(id);
+            _repo.Delete(id);
+        }
     }
 }

@@ -83,7 +83,23 @@ namespace Keeper.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        [Authorize]
 
+        public ActionResult<Vault> Delete(int id)
+        {
+            try
+            {
+                _vs.Delete(id);
+                return Ok("Deleted Vault");
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
 
 
     }

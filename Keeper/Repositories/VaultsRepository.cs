@@ -59,5 +59,11 @@ namespace Keeper.Repositories
 
             _db.Execute(sql, original);
         }
+
+        internal void Delete(int id)
+        {
+            string sql = "DELETE FROM vaults WHERE id = @id LIMIT 1";
+            _db.Execute(sql, new { id });
+        }
     }
 }
