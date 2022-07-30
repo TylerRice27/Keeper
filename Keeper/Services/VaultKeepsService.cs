@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Keeper.Models;
 using Keeper.Repositories;
 
@@ -15,6 +16,11 @@ namespace Keeper.Services
         internal VaultKeep Create(VaultKeep vaultKeepData)
         {
             return _repo.Create(vaultKeepData);
+        }
+
+        internal List<VaultKeepViewModel> GetByVaultId(int id)
+        {
+            return _repo.GetByVaultId(id);
         }
     }
 }
