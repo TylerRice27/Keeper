@@ -20,4 +20,10 @@ namespace Keeper.Models
 
 
     }
+    public class VaultKeepViewModel : Keep
+    {
+        public int VaultKeepId { get; set; }
+
+
+    }
 }
