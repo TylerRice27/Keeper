@@ -41,7 +41,7 @@ namespace Keeper.Controllers
         }
 
         [HttpGet("{id}/keeps")]
-        public ActionResult<List<Keep>> Get(string id)
+        public ActionResult<List<Keep>> GetKeepsByCreatorId(string id)
         {
             try
             {
@@ -53,6 +53,25 @@ namespace Keeper.Controllers
 
                 return BadRequest(e.Message);
             }
+
+        }
+
+        [HttpGet("{id}/vaults")]
+
+        public ActionResult<List<Vault>> GetVaultsByCreatorId(string id)
+        {
+
+            try
+            {
+                List<Vault> vaults = _vs.GetVaultsByCreatorId(id);
+                return Ok(vaults);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
 
         }
 

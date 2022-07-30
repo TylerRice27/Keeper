@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Keeper.Models;
 using Keeper.Repositories;
 
@@ -52,6 +53,11 @@ namespace Keeper.Services
         {
             Vault foundVault = Get(id);
             _repo.Delete(id);
+        }
+
+        internal List<Vault> GetVaultsByCreatorId(string id)
+        {
+            return _repo.GetAllVaultsByCreatorId(id);
         }
     }
 }
