@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -16,19 +15,21 @@ namespace Keeper.Repositories
             _db = db;
         }
 
-        internal List<Vault> Get()
+        internal Vault Get(int id)
         {
-            string sql = @"SELECT
+            string sql = @"
+            SELECT
             a.*,
             v.*
             FROM vaults v
-            JOIN accounts a ON a.id = v.creatorId;";
+            JOIN accounts a ON a.id = v.creatorId
+            WHERE v.id - @id";
 
             return _db.Query<Profile, Vault, Vault>(sql, (prof, vault) =>
             {
                 vault.Creator = prof;
                 return vault;
-            }).ToList();
+            }, new { id }).FirstOrDefault();
 
         }
 

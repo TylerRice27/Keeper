@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using Keeper.Models;
 using Keeper.Repositories;
 
@@ -14,12 +14,23 @@ namespace Keeper.Services
             _repo = repo;
         }
 
-        internal List<Vault> Get(string userId)
+        internal Vault Get(int id)
         {
-            List<Vault> vaults = _repo.Get();
-            return vaults;
+            Vault foundVault = _repo.Get(id);
+            if (foundVault == null)
+            {
+                throw new Exception("Invaild Id");
+            }
 
+            return foundVault;
         }
+
+        // internal List<Vault> Get(string userId)
+        // {
+        //     List<Vault> vaults = _repo.Get();
+        //     return vaults;
+
+        // }
 
         internal Vault Create(Vault vaultData)
         {

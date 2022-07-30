@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using Keeper.Models;
@@ -43,17 +42,14 @@ namespace Keeper.Controllers
 
         }
 
-
-        [HttpGet]
-        public async Task<ActionResult<List<Vault>>> Get()
+        [HttpGet("{id}")]
+        public ActionResult<Vault> Get(int id)
         {
+
             try
             {
-
-                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-
-                List<Vault> vaults = _vs.Get(userInfo.Id);
-                return Ok(vaults);
+                Vault vault = _vs.Get(id);
+                return Ok(vault);
             }
             catch (Exception e)
             {
@@ -63,5 +59,28 @@ namespace Keeper.Controllers
 
 
         }
+
+
+
+
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Vault>> Get()
+        // {
+        //     try
+        //     {
+
+        //         Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
+        //         < Vault > vault = _vs.Get(userInfo.Id);
+        //         return Ok(vault);
+        //     }
+        //     catch (Exception e)
+        //     {
+
+        //         return BadRequest(e.Message);
+        //     }
+
+
+        // }
     }
 }
