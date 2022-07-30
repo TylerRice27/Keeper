@@ -86,6 +86,10 @@ namespace Keeper.Services
         internal Vault Edit(Vault vault)
         {
             Vault original = Get(vault.Id);
+            if (vault.CreatorId != original.CreatorId)
+            {
+                throw new Exception("You can not edit this Vault, You don't own this Vault");
+            }
             original.Name = vault.Name ?? original.Name;
             original.Description = vault.Description ?? original.Description;
             // original.IsPrivate = vault.IsPrivate ?? original.IsPrivate;
@@ -94,9 +98,14 @@ namespace Keeper.Services
             return original;
         }
 
-        internal void Delete(int id)
+        internal void Delete(int id, string userId)
         {
             Vault foundVault = Get(id);
+            if (userId != foundVault.CreatorId)
+            {
+                throw new Exception("You can not delete this Vault");
+
+            }
             _repo.Delete(id);
         }
 
