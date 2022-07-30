@@ -49,14 +49,34 @@ namespace Keeper.Controllers
 
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Vault> Get(int id)
+        [HttpGet]
+        public async Task<ActionResult<List<Vault>>> Get()
         {
 
             try
             {
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
+                List<Vault> vaults = _vs.Get(userInfo?.Id);
+                return Ok(vaults);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Vault> Get(int id)
+        {
+            try
+            {
                 Vault vault = _vs.Get(id);
                 return Ok(vault);
+
             }
             catch (Exception e)
             {

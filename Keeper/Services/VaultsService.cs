@@ -19,16 +19,28 @@ namespace Keeper.Services
             _repo = repo;
         }
 
+        internal List<Vault> Get(string userId)
+        {
+            List<Vault> foundVaults = _repo.Get();
+            // if (foundVault == null)
+            // {
+            //     throw new Exception("Invaild Id");
+            // }
+
+            return foundVaults.FindAll(v => v.IsPrivate == true || v.CreatorId == userId);
+        }
+
         internal Vault Get(int id)
         {
-            Vault foundVault = _repo.Get(id);
-            if (foundVault == null)
+            Vault found = _repo.Get(id);
+            if (found == null)
             {
-                throw new Exception("Invaild Id");
+                throw new Exception("Invalid ID");
             }
-
-            return foundVault;
+            return found;
         }
+
+
 
         // internal List<Vault> Get(string userId)
         // {

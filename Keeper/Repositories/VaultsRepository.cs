@@ -16,6 +16,23 @@ namespace Keeper.Repositories
             _db = db;
         }
 
+        internal List<Vault> Get()
+        {
+            string sql = @"
+            SELECT
+            a.*,
+            v.*
+            FROM vaults v
+            JOIN accounts a ON a.id = v.creatorId;";
+
+            return _db.Query<Profile, Vault, Vault>(sql, (prof, vault) =>
+            {
+                vault.Creator = prof;
+                return vault;
+            }).ToList();
+
+        }
+
         internal Vault Get(int id)
         {
             string sql = @"
