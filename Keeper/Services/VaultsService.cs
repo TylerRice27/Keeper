@@ -8,10 +8,14 @@ namespace Keeper.Services
 
     public class VaultsService
     {
+
+        private readonly AccountService _acs;
+
         private readonly VaultsRepository _repo;
 
-        public VaultsService(VaultsRepository repo)
+        public VaultsService(AccountService acs, VaultsRepository repo)
         {
+            _acs = acs;
             _repo = repo;
         }
 
@@ -53,6 +57,12 @@ namespace Keeper.Services
         {
             Vault foundVault = Get(id);
             _repo.Delete(id);
+        }
+
+        internal List<Vault> GetMyVaults(string accountId)
+        {
+            _acs.GetProfileById(accountId);
+            return _repo.GetMyVaults(accountId);
         }
 
         internal List<Vault> GetVaultsByCreatorId(string id)

@@ -78,6 +78,24 @@ namespace Keeper.Repositories
             }, new { id }).ToList();
         }
 
+        internal List<Vault> GetMyVaults(string creatorId)
+        {
+            string sql = @"
+            SELECT
+            v.*,
+            a.*
+            FROM vaults v
+            JOIN accounts a ON a.id = v.creatorId
+            WHERE v.creatorId = @creatorId
+            ";
+            return _db.Query<Vault, Profile, Vault>(sql, (vault, prof) =>
+            {
+                vault.Creator = prof;
+                return vault;
+
+            }, new { creatorId }).ToList();
+        }
+
         internal void Delete(int id)
         {
             string sql = "DELETE FROM vaults WHERE id = @id LIMIT 1";
