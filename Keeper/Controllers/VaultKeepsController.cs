@@ -42,6 +42,27 @@ namespace Keeper.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        [Authorize]
+
+        public async Task<ActionResult<VaultKeep>> Delete(int id)
+        {
+            try
+            {
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+                _vks.Delete(id, userInfo.Id);
+                return Ok("Delete VaultKeep");
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+
+        }
+
 
     }
 }

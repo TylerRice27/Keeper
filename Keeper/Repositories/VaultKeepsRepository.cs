@@ -29,6 +29,7 @@ namespace Keeper.Repositories
             return vaultKeepData;
         }
 
+
         internal List<VaultKeepViewModel> GetByVaultId(int id)
         {
             string sql = @"
@@ -47,8 +48,16 @@ namespace Keeper.Repositories
                 return vkvkm;
             }, new { id }).ToList();
         }
+        internal VaultKeep Get(int id)
+        {
+            string sql = "SELECT * FROM vaultkeeps WHERE id = @id";
+            return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
+        }
 
-
-
+        internal void Delete(int id)
+        {
+            string sql = "DELETE FROM vaultkeeps WHERE id = @Id LIMIT 1";
+            _db.Execute(sql, new { id });
+        }
     }
 }
