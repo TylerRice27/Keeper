@@ -92,11 +92,15 @@ namespace Keeper.Controllers
         [HttpPut("{id}")]
         [Authorize]
 
-        public ActionResult<Vault> Edit([FromBody] Vault vault, int id)
+        public async Task<ActionResult<Vault>> Edit([FromBody] Vault vault, int id)
         {
             try
             {
+
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
                 vault.Id = id;
+                vault.CreatorId = userInfo.Id;
                 Vault editVault = _vs.Edit(vault);
                 return Ok(editVault);
 
