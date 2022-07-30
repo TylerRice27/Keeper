@@ -36,5 +36,16 @@ namespace Keeper.Services
         {
             return _repo.Create(vaultData);
         }
+
+        internal Vault Edit(Vault vault)
+        {
+            Vault original = Get(vault.Id);
+            original.Name = vault.Name ?? original.Name;
+            original.Description = vault.Description ?? original.Description;
+            original.IsPrivate = vault.IsPrivate ?? original.IsPrivate;
+
+            _repo.Edit(original);
+            return original;
+        }
     }
 }

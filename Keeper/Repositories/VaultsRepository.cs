@@ -46,5 +46,18 @@ namespace Keeper.Repositories
             vaultData.Id = id;
             return vaultData;
         }
+
+        internal void Edit(Vault original)
+        {
+            string sql = @"
+            UPDATE vaults
+            SET
+            name = @Name,
+            description = @Description,
+            isPrivate = @IsPrivate
+            WHERE id =@Id;";
+
+            _db.Execute(sql, original);
+        }
     }
 }
