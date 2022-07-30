@@ -29,6 +29,9 @@ namespace Keeper.Controllers
                 Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
                 vaultData.CreatorId = userInfo?.Id;
                 Vault newVault = _vs.Create(vaultData);
+                // This line sent my creator.Data back has an Object
+                // To make my schema model happy
+                newVault.Creator = userInfo;
                 return Ok(newVault);
 
             }
