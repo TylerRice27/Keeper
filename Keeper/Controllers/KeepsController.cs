@@ -87,11 +87,14 @@ namespace Keeper.Controllers
         [HttpPut("{id}")]
         [Authorize]
 
-        public ActionResult<Keep> Edit([FromBody] Keep keep, int id)
+        public async Task<ActionResult<Keep>> EditAsync([FromBody] Keep keep, int id)
         {
             try
             {
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
                 keep.Id = id;
+                keep.CreatorId = userInfo.Id;
                 Keep editKeep = _ks.Edit(keep);
                 return Ok(editKeep);
 
@@ -108,11 +111,13 @@ namespace Keeper.Controllers
         [HttpDelete("{id}")]
         [Authorize]
 
-        public ActionResult<Keep> Delete(int id)
+        public async Task<ActionResult<Keep>> DeleteAsync(int id)
         {
             try
             {
-                _ks.Delete(id);
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
+                _ks.Delete(id, userInfo.Id);
                 return Ok("Deleted Keep");
             }
             catch (Exception e)

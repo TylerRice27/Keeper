@@ -40,6 +40,10 @@ namespace Keeper.Services
         internal Keep Edit(Keep keep)
         {
             Keep original = Get(keep.Id);
+            if (keep.CreatorId != original.CreatorId)
+            {
+                throw new Exception("You can not edit this Keep, You don't own this Keep");
+            }
             original.Name = keep.Name ?? original.Name;
             original.Description = keep.Description ?? original.Description;
             original.Img = keep.Img ?? original.Img;
@@ -55,9 +59,15 @@ namespace Keeper.Services
             return _repo.GetAllKeepsByCreatorId(id);
         }
 
-        internal void Delete(int id)
+        internal void Delete(int id, string userId)
         {
             Keep foundKeep = Get(id);
+            if (userId != foundKeep.CreatorId)
+            {
+                throw new Exception("You can not delete this keep");
+
+            }
+
             _repo.Delete(id);
         }
     }

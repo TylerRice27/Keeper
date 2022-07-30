@@ -57,8 +57,8 @@ namespace Keeper.Repositories
         internal VaultKeep GetKeeps(int id, string userId)
         {
             string sql = @"
-            SELECT * FROM keeps
-            WHERE vaultId = @id AND creatorId = @userId
+            SELECT * FROM 
+            WHERE VaultKeepId = @id AND creatorId = @userId
             ";
             return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id, userId });
         }

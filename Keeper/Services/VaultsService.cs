@@ -56,13 +56,13 @@ namespace Keeper.Services
             }
             if (found.IsPrivate && found.CreatorId != userId)
             {
-                VaultKeep vaultKeep = _vksRepo.GetKeeps(id, userId);
+                // VaultKeep vaultKeep = _vksRepo.GetKeeps(id, userId);
 
-                if (vaultKeep == null)
-                {
+                // if (vaultKeep == null)
+                // {
 
-                    throw new Exception("This is Private");
-                }
+                throw new Exception("This is Private");
+                // }
 
             }
             return found;
