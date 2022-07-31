@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="masonry-frame">
-      <div>
+      <div class="col-md-12">
         <Kep v-for="k in keeps" :key="k.id" :keep="k" />
       </div>
     </div>
