@@ -19,7 +19,7 @@
     </Modal>
 
     <Modal id="keep-details">
-      <template #header>Modal Details</template>
+      <template #header>{{ activeKeep.name }}</template>
       <template #body>
         <KepModal />
       </template>
@@ -34,6 +34,7 @@ export default {
   name: 'App',
   setup() {
     return {
+      activeKeep: computed(() => AppState.activeKeep),
       appState: computed(() => AppState)
     }
   }

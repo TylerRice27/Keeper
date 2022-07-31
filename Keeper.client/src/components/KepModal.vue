@@ -26,26 +26,27 @@
           <p>{{ activeKeep.description }}</p>
         </div>
       </div>
-      <div class="dropdown pb-2">
-        <button
-          class="btn btn-primary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Add to a Vault
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-        <i class="mdi mdi-delete text-danger fs-4"></i>
-        <img
-          class="profile-picture rounded-pill"
-          :src="activeKeep.creator.picture"
-          alt=""
-        />
+      <!-- Maybe put an offset here later -->
+      <div class="row-reverse">
+        <div class="col-md-12 d-flex justify-content-evenly dropdown pb-2">
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Add to a Vault
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+          <i class="mdi mdi-delete text-danger fs-4"></i>
+          <!-- 
+          <img class="profile-picture" :src="activeKeep.creator.picture" />
+          <span class="p-2">{{ activeKeep.creator.name }}</span> -->
+        </div>
       </div>
     </div>
   </div>
@@ -68,6 +69,7 @@ export default {
     return {
       keep,
       activeKeep: computed(() => AppState.activeKeep),
+      account: computed(() => AppState.account)
 
 
 
