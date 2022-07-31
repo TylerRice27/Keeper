@@ -142,8 +142,8 @@ namespace Keeper.Controllers
             try
             {
                 Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-                // List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id, userInfo?.Id);
-                List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id);
+                List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id, userInfo?.Id);
+                // List<VaultKeepViewModel> keeps = _vks.GetByVaultId(id);
 
                 return Ok(keeps);
 
