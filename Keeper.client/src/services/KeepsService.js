@@ -5,8 +5,16 @@ class KeepsService {
 
     async getAll() {
         const res = await api.get('api/keeps')
-        logger.log("get all keeps", res.data)
+        // logger.log("get all keeps", res.data)
         AppState.keeps = res.data
+
+
+    }
+
+    async setActive(keep) {
+        AppState.activeKeep = keep
+        const res = await api.get(`api/keeps/${keep.id}`)
+        logger.log("open this keep modal", res.data)
 
 
     }

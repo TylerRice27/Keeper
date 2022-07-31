@@ -1,6 +1,9 @@
 <template>
   <div
-    class="m-3 p-4 card elevation-3 bg-secondary lighten-20"
+    data-bs-target="#keep-modal"
+    data-bs-toggle="modal"
+    class="m-3 p-4 card elevation-3 bg-secondary selectable lighten-20"
+    @click="setActive"
     :style="`background-image: url(${keep.img});`"
   >
     <div class="d-flex justify-content-between align-items-end">
@@ -20,11 +23,24 @@
 
 
 <script>
+import { keepsService } from '../services/KeepsService'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 export default {
 
   props: { keep: { type: Object, required: true } },
   setup(props) {
-    return {}
+    return {
+      async setActive() {
+        try {
+          keepsService.setActive(props.keep)
+        } catch (error) {
+          Pop.toast("Something went wrong", "error")
+          logger.error(error)
+        }
+
+      }
+    }
   }
 }
 </script>
