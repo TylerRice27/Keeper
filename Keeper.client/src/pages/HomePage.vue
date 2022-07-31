@@ -1,10 +1,7 @@
 <template>
-  <div class="container">
-    <div class="masonry-frame">
-      <div class="col-md-12">
-        <Kep v-for="k in keeps" :key="k.id" :keep="k" />
-      </div>
-    </div>
+  <div class="masonry-with-flex">
+    <Kep v-for="k in keeps" :key="k.id" :keep="k" class="kep" />
+    \
   </div>
 </template>
 
@@ -40,11 +37,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.masonry-frame {
-  columns: 4;
-
-  div {
-    break-inside: avoid;
+.masonry-with-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px;
+  .kep {
+    width: 150px;
+    background: #ec985a;
+    color: white;
+    margin: 0 1rem 1rem 0;
+  }
+  @for $i from 1 through 36 {
+    div:nth-child(#{$i}) {
+      $h: (random(400) + 100) + px;
+      height: $h;
+      line-height: $h;
+    }
   }
 }
 </style>
