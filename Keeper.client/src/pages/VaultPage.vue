@@ -1,12 +1,13 @@
-<template>
-  <div class="about">
-    <h1>This is the about page</h1>
-  </div>
-</template>
+<template></template>
 
 <script>
 export default {
-  name: 'VaultPage'
+  name: 'VaultPage',
+  setup() {
+    return {
+
+    }
+  }
 }
 </script>
 
