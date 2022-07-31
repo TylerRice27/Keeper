@@ -16,12 +16,17 @@ namespace Keeper.Services
             _repo = repo;
         }
 
-        internal VaultKeep Create(VaultKeep vaultKeepData, string userId)
+        internal VaultKeep Create(VaultKeep vaultKeepData)
         {
-            if (vaultKeepData.CreatorId != userId)
-            {
-                throw new Exception("You can not create a keep within this Vault");
-            }
+            // VaultKeep exists = _repo.Create(vaultKeepData);
+            // if (exists != null)
+            // {
+            //     return exists;
+            // }
+            // if (vaultKeepData.CreatorId != userId)
+            // {
+            //     throw new Exception("You can not create a keep within this Vault");
+            // }
             return _repo.Create(vaultKeepData);
         }
 
