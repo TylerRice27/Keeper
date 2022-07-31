@@ -1,10 +1,10 @@
 <template>
   <!-- <template #modal-title>{{ activeKeep.name }}</template> -->
   <div class="component" id="keep-details">
-    <div class="row">
+    <div class="row text-center">
       <div class="col-md-4">
         <img
-          class="img-fluid"
+          class="m-2 img-fluid"
           :src="activeKeep.img"
           :alt="activeKeep.name + ' picture'"
         />
@@ -20,11 +20,32 @@
             justify-content-center
           "
         >
-          <h3 class="mb-5">
+          <h3 class="mb-5 mt-5">
             {{ activeKeep.name }}
           </h3>
           <p>{{ activeKeep.description }}</p>
         </div>
+      </div>
+      <div class="dropdown pb-2">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Add to a Vault
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+        <i class="mdi mdi-delete text-danger fs-4"></i>
+        <img
+          class="profile-picture rounded-pill"
+          :src="activeKeep.creator.picture"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -58,6 +79,11 @@ export default {
 img {
   width: 100%;
   object-fit: cover;
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
 }
 
 .reviews {
