@@ -3,23 +3,37 @@
     class="modal fade"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
+    aria-labelledby="modelTitleId"
     aria-hidden="true"
   >
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            <slot name="modal-title"></slot>
-          </h5>
-          <a class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"><i class="mdi mdi-close"></i></span>
-          </a>
+        <div class="modal-header bg-primary">
+          <slot class="modal-title" name="header"></slot>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-        <div class="modal-body">
-          <slot name="modal-body"></slot>
-        </div>
+        <slot name="body" class="modal-body p-0"> </slot>
       </div>
     </div>
   </div>
 </template>
+
+
+<script>
+export default {
+  setup() {
+    return {}
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+// .modal-header {
+// }
+</style>

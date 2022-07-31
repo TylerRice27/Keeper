@@ -18,8 +18,8 @@
       </template>
     </Modal>
 
-    <Modal id="keep-modal">
-      <template #header>Create Vault</template>
+    <Modal id="keep-details">
+      <template #header>Modal Details</template>
       <template #body>
         <KepModal />
       </template>

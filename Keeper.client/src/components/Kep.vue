@@ -1,7 +1,5 @@
 <template>
   <div
-    data-bs-target="#keep-modal"
-    data-bs-toggle="modal"
     class="
       m-3
       p-4
@@ -32,6 +30,8 @@
 
 
 <script>
+import { useRouter } from 'vue-router'
+import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
@@ -39,9 +39,11 @@ export default {
 
   props: { keep: { type: Object, required: true } },
   setup(props) {
+    const router = useRouter()
     return {
       async setActive() {
         try {
+
           keepsService.setActive(props.keep)
         } catch (error) {
           Pop.toast("Something went wrong", "error")
