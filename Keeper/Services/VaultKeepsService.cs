@@ -30,7 +30,7 @@ namespace Keeper.Services
             return _repo.Create(vaultKeepData);
         }
 
-        internal List<VaultKeepViewModel> GetByVaultId(int id, string userId)
+        internal List<VaultKeepViewModel> GetByVaultId(int id)
         {
 
             // Vault vaults = _vr.Get(id);
