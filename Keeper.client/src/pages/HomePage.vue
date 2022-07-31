@@ -1,7 +1,9 @@
 <template>
-  <div class="masonry-frame">
-    <div>
-      <Keep v-for="k in keeps" :key="k.id" :keep="k" />
+  <div class="container">
+    <div class="masonry-frame">
+      <div>
+        <Kep v-for="k in keeps" :key="k.id" :keep="k" />
+      </div>
     </div>
   </div>
 </template>
@@ -38,21 +40,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card {
-    width: 50vw;
-    > img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
+.masonry-frame {
+  columns: 4;
+
+  div {
+    break-inside: avoid;
   }
 }
 </style>
