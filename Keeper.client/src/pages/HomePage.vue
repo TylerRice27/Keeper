@@ -1,7 +1,12 @@
 <template>
   <div class="masonry-with-flex">
-    <Kep v-for="k in keeps" :key="k.id" :keep="k" class="kep" />
-    \
+    <Kep
+      v-for="k in keeps"
+      :key="k.id"
+      :keep="k"
+      data-bs-toggle="modal"
+      data-bs-target="#keep-details"
+    />
   </div>
 </template>
 
