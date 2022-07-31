@@ -21,7 +21,7 @@
               :src="account.picture"
               alt="account photo"
               height="40"
-              class="rounded"
+              class="rounded p-0"
             />
             <span class="mx-3 text-light">{{ account.name }}</span>
           </div>
