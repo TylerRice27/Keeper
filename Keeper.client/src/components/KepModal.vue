@@ -2,22 +2,28 @@
   <!-- <template #modal-title>{{ activeKeep.name }}</template> -->
   <div class="component" id="keep-details">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <img
           class="img-fluid"
-          :src="activeKeep.picture"
+          :src="activeKeep.img"
           :alt="activeKeep.name + ' picture'"
         />
       </div>
       <div class="col-md-6">
-        <div class="ms-4 d-flex flex-column justify-content-center">
-          <h3 class="pb-2 border-bottom border-secondary">
+        <div
+          class="
+            pb-2
+            border-bottom border-secondary
+            ms-4
+            d-flex
+            flex-column
+            justify-content-center
+          "
+        >
+          <h3 class="mb-5">
             {{ activeKeep.name }}
-            <small>
-              <kbd class="">{{ keep.category }}</kbd></small
-            >
           </h3>
-          {{ activeKeep }}
+          <p>{{ activeKeep.description }}</p>
         </div>
       </div>
     </div>
