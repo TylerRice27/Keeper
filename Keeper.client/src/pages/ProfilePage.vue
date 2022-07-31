@@ -10,7 +10,7 @@
 import { computed } from 'vue'
 import { AppState } from '../AppState'
 export default {
-  name: 'Account',
+  name: 'Profile',
   setup() {
     return {
       account: computed(() => AppState.account)
@@ -19,8 +19,5 @@ export default {
 }
 </script>
 
-<style scoped>
-img {
-  max-width: 100px;
-}
+<style scoped lang="scss">
 </style>

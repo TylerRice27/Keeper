@@ -6,6 +6,11 @@
 
 <script>
 export default {
-  name: 'AboutPage'
+  name: 'VaultPage'
 }
 </script>
+
+
+
+<style scoped lang="scss">
+</style>
