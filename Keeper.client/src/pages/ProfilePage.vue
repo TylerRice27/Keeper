@@ -5,8 +5,8 @@
         <img class="rounded m-3 img-fluid logo" :src="profile.picture" alt="" />
         <div class="mt-3">
           <h1 class="p-1">{{ profile.name }}</h1>
-          <h3 class="p-1">Vaults:{{ vaults.view }}</h3>
-          <h3 class="p-1">Keeps:{{ keeps.kept }}</h3>
+          <h3 class="p-1">Vaults:{{ vaults.length }}</h3>
+          <h3 class="p-1">Keeps:{{ keeps.length }}</h3>
         </div>
       </div>
     </div>

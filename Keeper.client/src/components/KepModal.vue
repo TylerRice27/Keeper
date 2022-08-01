@@ -38,14 +38,24 @@
             Add to a Vault
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <a
+                v-for="v in vaults"
+                :key="v.id"
+                :vault="v"
+                class="dropdown-item"
+                href="#"
+                >{{ v.name }}</a
+              >
+            </li>
           </ul>
-          <i @click="deleteKeep" class="mdi mdi-delete text-danger fs-4"></i>
-          <!-- 
-          <img class="profile-picture" :src="activeKeep.creator.picture" />
-          <span class="p-2">{{ activeKeep.creator.name }}</span> -->
+          <i
+            @click="deleteKeep(activeKeep.id)"
+            class="mdi mdi-delete text-danger fs-4"
+          ></i>
+
+          <img class="profile-picture" :src="activeKeep.creator?.picture" />
+          <span class="p-2">{{ activeKeep.creator?.name }}</span>
         </div>
       </div>
     </div>
@@ -71,11 +81,13 @@ export default {
       keep,
       activeKeep: computed(() => AppState.activeKeep),
       account: computed(() => AppState.account),
+      vaults: computed(() => AppState.vaults),
 
 
-      async deleteKeep() {
+      async deleteKeep(id) {
         try {
-          const res = await keepsService.deleteKeep(route.params.keepId)
+          debugger
+          const res = await keepsService.deleteKeep(id)
         } catch (error) {
           Pop.toast(error.message)
           logger.error(error)
