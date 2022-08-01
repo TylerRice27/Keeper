@@ -28,7 +28,9 @@
       </div>
       <!-- Maybe put an offset here later -->
       <div class="row-reverse">
-        <div class="col-md-12 d-flex justify-content-evenly dropdown pb-2">
+        <div
+          class="col-md-12 d-flex offset-2 justify-content-evenly dropdown pb-2"
+        >
           <button
             class="btn btn-primary dropdown-toggle"
             type="button"
@@ -53,9 +55,10 @@
             @click="deleteKeep(activeKeep.id)"
             class="mdi mdi-delete text-danger fs-4"
           ></i>
-
-          <img class="profile-picture" :src="activeKeep.creator?.picture" />
-          <span class="p-2">{{ activeKeep.creator?.name }}</span>
+          <div>
+            <img class="profile-picture" :src="activeKeep.creator?.picture" />
+            <span class="p-2">{{ activeKeep.creator?.name }}</span>
+          </div>
         </div>
       </div>
     </div>

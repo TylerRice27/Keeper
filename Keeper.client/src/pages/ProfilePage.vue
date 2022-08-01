@@ -36,7 +36,13 @@
       </div>
     </div>
     <div class="masonry-with-flex">
-      <Kep v-for="k in keeps" :key="k.id" :keep="k" />
+      <Kep
+        data-bs-toggle="modal"
+        data-bs-target="#keep-details"
+        v-for="k in keeps"
+        :key="k.id"
+        :keep="k"
+      />
     </div>
   </div>
 </template>

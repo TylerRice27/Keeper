@@ -48,7 +48,7 @@ body {
 }
 .masonry-with-flex {
   display: flex;
-
+  // columns: 4 200px;
   // If I put this on I get Massive Ugly Side Scroll
   // flex-direction: column;
   flex-wrap: wrap;
