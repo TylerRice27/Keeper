@@ -8,6 +8,12 @@ class ProfilesService {
         AppState.activeProfile = res.data
     }
 
+    async getUsersVaults(profileId) {
+        const res = await api.get(`api/profiles/${profileId}/vaults`)
+        logger.log('User vaults', res.data)
+        AppState.vaults = res.data
+    }
+
 }
 
 
