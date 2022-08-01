@@ -12,6 +12,7 @@ CREATE TABLE
     IF NOT EXISTS vaults(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
+        img VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         isPrivate TINYINT NOT NULL DEFAULT 0,
         creatorId VARCHAR(255) NOT NULL,
