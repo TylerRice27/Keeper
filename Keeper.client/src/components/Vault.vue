@@ -16,7 +16,7 @@
       d-flex
       justify-content-end
     "
-    @click="setActive"
+    @click="goToVaultPage"
     :style="`background-image: url(${vault.img});`"
   >
     <h6 class="text-light">
@@ -40,9 +40,9 @@ export default {
     const router = useRouter()
     return {
 
-      goToProfile() {
+      goToVaultPage() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
-        router.push({ name: "Profile", params: { id: props.keep.creator.id } })
+        router.push({ name: "Vault", params: { id: props.vault.id } })
       },
 
 
