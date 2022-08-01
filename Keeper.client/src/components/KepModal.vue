@@ -42,7 +42,7 @@
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-          <i class="mdi mdi-delete text-danger fs-4"></i>
+          <i @click="deleteKeep" class="mdi mdi-delete text-danger fs-4"></i>
           <!-- 
           <img class="profile-picture" :src="activeKeep.creator.picture" />
           <span class="p-2">{{ activeKeep.creator.name }}</span> -->
@@ -60,6 +60,7 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { useRoute } from 'vue-router'
+import { keepsService } from '../services/KeepsService.js'
 
 export default {
   setup(props) {
@@ -69,9 +70,17 @@ export default {
     return {
       keep,
       activeKeep: computed(() => AppState.activeKeep),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
 
 
+      async deleteKeep() {
+        try {
+          const res = await keepsService.deleteKeep(route.params.keepId)
+        } catch (error) {
+          Pop.toast(error.message)
+          logger.error(error)
+        }
+      }
 
     }
   }
