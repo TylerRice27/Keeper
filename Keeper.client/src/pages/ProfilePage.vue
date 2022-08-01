@@ -20,7 +20,7 @@
       <Vault v-for="v in vaults" :key="v.id" :vault="v" />
     </div>
     <div class="row">
-      <div class="col-md-12 mt-5 d-flex">
+      <div class="col-md-12 m-3 mt-5 d-flex">
         <h1>Keeps</h1>
         <i class="mdi mdi-plus fs-1 text-primary"></i>
       </div>

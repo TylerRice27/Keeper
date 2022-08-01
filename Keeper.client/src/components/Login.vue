@@ -31,7 +31,7 @@
         class="dropdown-menu p-0 list-group w-100"
         aria-labelledby="authDropdown"
       >
-        <router-link :to="{ name: 'Profile' }">
+        <router-link :to="{ name: 'Account' }">
           <div class="list-group-item list-group-item-action hoverable">
             Manage Account
           </div>
