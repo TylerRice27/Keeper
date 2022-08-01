@@ -81,7 +81,7 @@ export default {
 .kep-hover {
   //   display: flex;
   //   align-items: flex-end;
-  transition: all 0.4s ease-in-out;
+  transition: all 4s ease-in-out;
 }
 
 .kep-hover:hover {

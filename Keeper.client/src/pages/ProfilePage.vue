@@ -9,15 +9,24 @@
           <h3 class="p-1">Keeps:{{ keeps.kept }}</h3>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 m-3 mt-5 d-flex">
-          <h1>Vaults</h1>
-          <i class="mdi mdi-plus fs-1 text-primary"></i>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 m-3 mt-5 d-flex">
+        <h1>Vaults</h1>
+        <i class="mdi mdi-plus fs-1 text-primary"></i>
       </div>
-      <div class="row">
-        <Vault v-for="v in vaults" :key="v.id" :vault="v" />
+    </div>
+    <div class="row">
+      <Vault v-for="v in vaults" :key="v.id" :vault="v" />
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-5 d-flex">
+        <h1>Keeps</h1>
+        <i class="mdi mdi-plus fs-1 text-primary"></i>
       </div>
+    </div>
+    <div class="masonry-with-flex">
+      <Kep v-for="k in keeps" :key="k.id" :keep="k" />
     </div>
   </div>
 </template>
@@ -36,6 +45,7 @@ import { keepsService } from '../services/KeepsService';
 
 
 export default {
+  //   components: { Keep },
   setup(props) {
     const route = useRoute();
     onMounted(async () => {
@@ -43,8 +53,9 @@ export default {
 
         await profilesService.getProfile(route.params.id),
           await profilesService.getUsersVaults(route.params.id),
+          await profilesService.getUsersKeeps(route.params.id)
 
-          await keepsService.getAll()
+        //   await keepsService.getAll()
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')
@@ -65,4 +76,29 @@ export default {
 
 
 <style lang="scss" scoped>
+body {
+  margin: 0;
+  padding: 1rem;
+}
+.masonry-with-flex {
+  display: flex;
+
+  // If I put this on I get Massive Ugly Side Scroll
+  // flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px;
+  .kep {
+    width: 150px;
+    background: #ec985a;
+    color: white;
+    margin: 0 1rem 1rem 0;
+  }
+  @for $i from 1 through 36 {
+    div:nth-child(#{$i}) {
+      $h: (random(400) + 100) + px;
+      height: $h;
+      line-height: $h;
+    }
+  }
+}
 </style>
