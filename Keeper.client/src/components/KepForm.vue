@@ -4,7 +4,7 @@
       <label>Keep Title</label>
       <input
         class="form-control"
-        v-model="editable.title"
+        v-model="editable.name"
         type="text"
         required
       />

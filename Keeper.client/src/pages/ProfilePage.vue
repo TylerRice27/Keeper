@@ -27,7 +27,12 @@
     <div class="row">
       <div class="col-md-12 m-3 mt-5 d-flex">
         <h1>Keeps</h1>
-        <i class="mdi mdi-plus fs-1 text-primary selectable"></i>
+        <i
+          @click="createVault"
+          data-bs-toggle="modal"
+          data-bs-target="#create-keep"
+          class="mdi mdi-plus fs-1 text-primary selectable"
+        ></i>
       </div>
     </div>
     <div class="masonry-with-flex">
