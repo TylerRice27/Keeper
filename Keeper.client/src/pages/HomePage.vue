@@ -44,7 +44,9 @@ export default {
 <style scoped lang="scss">
 .masonry-with-flex {
   display: flex;
-  flex-direction: column;
+
+  // If I put this on I get Massive Ugly Side Scroll
+  // flex-direction: column;
   flex-wrap: wrap;
   max-height: 1000px;
   .kep {

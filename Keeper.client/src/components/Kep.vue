@@ -16,14 +16,12 @@
     <div class="">
       <h6 class="text-light">
         {{ keep.name }}
-      </h6>
-      <div>
         <img
           class="profile-pic rounded-pill"
           :src="keep.creator.picture"
           alt=""
         />
-      </div>
+      </h6>
     </div>
   </div>
 </template>
