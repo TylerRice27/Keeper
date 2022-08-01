@@ -21,6 +21,7 @@
       {{ keep.name }}
       <img
         class="profile-pic rounded-pill"
+        @click.stop="goToProfile"
         :src="keep.creator.picture"
         alt=""
       />
@@ -30,6 +31,7 @@
 
 
 <script>
+import { Modal } from 'bootstrap'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
@@ -41,6 +43,14 @@ export default {
   setup(props) {
     const router = useRouter()
     return {
+
+      goToProfile() {
+        Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
+        router.push({ name: "Profile", params: { id: props.keep.creator.id } })
+      },
+
+
+
       async setActive() {
         try {
 
