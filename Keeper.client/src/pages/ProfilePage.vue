@@ -13,7 +13,12 @@
     <div class="row">
       <div class="col-md-12 m-3 mt-5 d-flex">
         <h1>Vaults</h1>
-        <i class="mdi mdi-plus fs-1 text-primary"></i>
+        <i
+          @click="createVault"
+          data-bs-toggle="modal"
+          data-bs-target="#create-vault"
+          class="mdi mdi-plus fs-1 text-primary selectable"
+        ></i>
       </div>
     </div>
     <div class="row">
@@ -22,7 +27,7 @@
     <div class="row">
       <div class="col-md-12 m-3 mt-5 d-flex">
         <h1>Keeps</h1>
-        <i class="mdi mdi-plus fs-1 text-primary"></i>
+        <i class="mdi mdi-plus fs-1 text-primary selectable"></i>
       </div>
     </div>
     <div class="masonry-with-flex">
@@ -50,7 +55,6 @@ export default {
     const route = useRoute();
     onMounted(async () => {
       try {
-
         await profilesService.getProfile(route.params.id),
           await profilesService.getUsersVaults(route.params.id),
           await profilesService.getUsersKeeps(route.params.id)

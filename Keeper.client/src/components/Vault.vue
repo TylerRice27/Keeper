@@ -21,12 +21,6 @@
   >
     <h6 class="text-light">
       {{ vault.name }}
-      <img
-        class="profile-pic rounded-pill"
-        @click.stop="goToProfile"
-        :src="vault.creator.picture"
-        alt=""
-      />
     </h6>
   </div>
 </template>
