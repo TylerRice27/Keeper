@@ -33,6 +33,7 @@ namespace Keeper.Services
             {
                 throw new Exception("Invaild Id");
             }
+            foundKeep.Views++;
 
             return foundKeep;
         }
