@@ -18,17 +18,20 @@ namespace Keeper.Services
 
         internal VaultKeep Create(VaultKeep vaultKeepData, string userId)
         {
-            VaultKeep exists = _repo.Create(vaultKeepData);
-            vaultKeepData.Id = exists.Id;
-            Vault vault = _vr.Get(exists.VaultId);
-            if (exists != null)
-            {
-                return exists;
-            }
-            if (vaultKeepData.CreatorId != userId)
+            // VaultKeep exists = _repo.Create(vaultKeepData);
+            // vaultKeepData.Id = exists.Id;
+            Vault vault = _vr.Get(vaultKeepData.VaultId);
+            // if (vault == null)
+            // {
+            //     // return exists;
+            //     throw new Exception("Invaild Id");
+
+            // }
+            if (vault.CreatorId != userId)
             {
                 throw new Exception("You can not create a keep within this Vault");
             }
+            // return exists;
             return _repo.Create(vaultKeepData);
         }
 
