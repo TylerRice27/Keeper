@@ -35,15 +35,20 @@ namespace Keeper.Services
         internal List<VaultKeepViewModel> GetByVaultId(int id, string userId)
         {
 
-            // Vault vaults = _vr.Get(id);
+            Vault vaults = _vr.Get(id);
 
-            // List<VaultKeepViewModel> keeps = _repo.GetByVaultId(id);
+            List<VaultKeepViewModel> keeps = _repo.GetByVaultId(id);
             // VaultKeep vk = _repo.GetByVaultId(id);
+            if (vaults == null)
+            {
+                throw new Exception("keep not found");
+            }
+            if (vaults.IsPrivate && vaults.CreatorId != userId)
+            {
+                throw new Exception("This is Private");
 
-            // if (vaults.IsPrivate == true)
-            // {
-            //     throw new Exception("This is Private");
-            // }
+            }
+            return keeps;
             // if (vaults.CreatorId != userId)
             // {
             //     throw new Exception("This is not your vault");
@@ -55,7 +60,7 @@ namespace Keeper.Services
 
 
 
-            return _repo.GetByVaultId(id);
+            // return _repo.GetByVaultId(id);
 
         }
 
