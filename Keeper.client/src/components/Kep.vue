@@ -1,4 +1,6 @@
 <template>
+  <!-- justify-content-end -->
+  <!-- put the words on the bottom -->
   <div
     class="
       m-3
@@ -9,20 +11,20 @@
       bg-secondary
       selectable
       lighten-20
+      d-flex
+      justify-content-end
     "
     @click="setActive"
     :style="`background-image: url(${keep.img});`"
   >
-    <div class="">
-      <h6 class="text-light">
-        {{ keep.name }}
-        <img
-          class="profile-pic rounded-pill"
-          :src="keep.creator.picture"
-          alt=""
-        />
-      </h6>
-    </div>
+    <h6 class="text-light">
+      {{ keep.name }}
+      <img
+        class="profile-pic rounded-pill"
+        :src="keep.creator.picture"
+        alt=""
+      />
+    </h6>
   </div>
 </template>
 
@@ -65,6 +67,8 @@ export default {
   width: 38px;
 }
 .kep-hover {
+  //   display: flex;
+  //   align-items: flex-end;
   transition: all 0.4s ease-in-out;
 }
 
