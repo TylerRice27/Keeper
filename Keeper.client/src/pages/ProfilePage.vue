@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 m-3 mt-5 d-flex">
+      <div class="col-md-12 mt-5 d-flex">
         <h1>Vaults</h1>
         <i
           @click="createVault"
@@ -25,7 +25,7 @@
       <Vault v-for="v in vaults" :key="v.id" :vault="v" />
     </div>
     <div class="row">
-      <div class="col-md-12 m-3 mt-5 d-flex">
+      <div class="col-md-12 mt-5 d-flex">
         <h1>Keeps</h1>
         <i
           @click="createVault"
@@ -97,7 +97,7 @@ body {
 }
 
 .masonry-with-columns {
-  columns: 6 200px;
+  columns: 4 200px;
   column-gap: 1rem;
   div {
     width: 150px;

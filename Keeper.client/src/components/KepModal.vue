@@ -101,6 +101,7 @@ export default {
       vaults: computed(() => AppState.vaults),
       myVaults: computed(() => AppState.myVaults),
 
+
       goToProfile() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
         router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })

@@ -50,7 +50,7 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-main {
-  overflow: hidden;
-}
+// main {
+//   overflow: hidden;
+// }
 </style>

@@ -50,7 +50,7 @@ body {
 }
 
 .masonry-with-columns {
-  columns: 6 200px;
+  columns: 4 200px;
   column-gap: 1rem;
   div {
     width: 150px;
