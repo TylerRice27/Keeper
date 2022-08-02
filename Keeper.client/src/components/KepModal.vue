@@ -106,7 +106,7 @@ export default {
 
       goToProfile() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
-        // if (activeKeep.creator.id != account.id) {
+        // if (this.activeKeep.creatorId != this.account) {
         router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })
 
         // }

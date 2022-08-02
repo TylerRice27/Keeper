@@ -5,8 +5,8 @@
       <img class="rounded m-3 img-fluid logo" :src="profile.picture" alt="" />
       <div class="mt-3">
         <h1 class="p-1">{{ profile.name }}</h1>
-        <h3 class="p-1">Vaults: {{ vaults.length }}</h3>
-        <h3 class="p-1">Keeps: {{ keeps.length }}</h3>
+        <h3 class="p-1">Vaults: {{ profileVaults.length }}</h3>
+        <h3 class="p-1">Keeps: {{ profileKeeps.length }}</h3>
       </div>
     </div>
     <!-- </div> -->
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row">
-      <Vault v-for="v in myVaults" :key="v.id" :vault="v" />
+      <Vault v-for="v in profileVaults" :key="v.id" :vault="v" />
     </div>
     <!-- <div v-else="v.creatorId != account.id" class="row">
       <Vault v-for="v in myVaults" :key="v.id" :vault="v" />
@@ -42,7 +42,7 @@
       <Kep
         data-bs-toggle="modal"
         data-bs-target="#keep-details"
-        v-for="k in keeps"
+        v-for="k in profileKeeps"
         :key="k.id"
         :keep="k"
       />
@@ -65,18 +65,21 @@ import { accountService } from '../services/AccountService';
 
 
 export default {
+  name: 'Profile',
   //   components: { Keep },
   setup(props) {
     const route = useRoute();
     onMounted(async () => {
       try {
-        if (route.params.id != AppState.account.id) {
-          await profilesService.getProfile(route.params.id)
-          await profilesService.getUsersVaults(route.params.id),
-            await profilesService.getUsersKeeps(route.params.id)
-        } else {
-          await accountService.getMyVaults(route.params.id)
-        }
+        await profilesService.getProfile(route.params.id)
+        // if (route.params.id != AppState.account.id) {
+        await profilesService.getUsersVaults(route.params.id)
+        await profilesService.getUsersKeeps(route.params.id)
+        // } else {
+        //   await accountService.getMyVaults(route.params.id)
+        //   await profilesService.getUsersKeeps(route.params.id)
+
+        // }
 
         //   await keepsService.getAll()
       } catch (error) {
@@ -90,6 +93,8 @@ export default {
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
       keeps: computed(() => AppState.keeps),
+      profileKeeps: computed(() => AppState.profileKeeps),
+      profileVaults: computed(() => AppState.profileVaults),
       myVaults: computed(() => AppState.myVaults),
       vaults: computed(() => AppState.vaults)
 
