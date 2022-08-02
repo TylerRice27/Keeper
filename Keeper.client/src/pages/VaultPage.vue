@@ -4,9 +4,16 @@
       <div class="d-flex col-md-12 mt-4">
         <div class="mt-3">
           <h1 class="p-1">{{ vault.name }}</h1>
+          <p class="p-1">Keeps: {{ vaultKeeps.length }}</p>
+          {{ vaultKeeps }}
         </div>
       </div>
     </div>
+    <!-- <div v-for="v in vaultKeeps" :key="v.id"> -->
+    <div class="mt-5 masonry-with-columns">
+      <Kep v-for="v in vaultKeeps" :key="v.id" :keep="v" />
+    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -46,4 +53,32 @@ export default {
 
 
 <style scoped lang="scss">
+body {
+  margin: 0;
+  padding: 1rem;
+}
+
+.masonry-with-columns {
+  columns: 6 200px;
+  column-gap: 1rem;
+  div {
+    width: 150px;
+    background: #ec985a;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  @for $i from 1 through 36 {
+    div:nth-child(#{$i}) {
+      $h: (random(400) + 100) + px;
+      height: $h;
+      line-height: $h;
+    }
+  }
+}
 </style>
