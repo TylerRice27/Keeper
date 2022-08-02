@@ -100,6 +100,7 @@ export default {
       account: computed(() => AppState.account),
       vaults: computed(() => AppState.vaults),
       myVaults: computed(() => AppState.myVaults),
+      // activeKeepViews: computed(() => AppState.activeKeep.views),
 
 
       goToProfile() {

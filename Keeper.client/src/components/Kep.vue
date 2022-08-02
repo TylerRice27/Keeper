@@ -16,15 +16,17 @@
     @click="setActive"
     :style="`background-image: url(${keep.img});`"
   >
-    <h6 class="text-light">
-      {{ keep.name }}
-      <img
-        class="profile-pic rounded-pill"
-        @click.stop="goToProfile"
-        :src="keep.creator.picture"
-        alt=""
-      />
-    </h6>
+    <div class="col-md-12">
+      <h6 class="text-light">
+        {{ keep.name }}
+        <img
+          class="profile-pic rounded-pill"
+          @click.stop="goToProfile"
+          :src="keep.creator.picture"
+          alt=""
+        />
+      </h6>
+    </div>
   </div>
 </template>
 
@@ -46,6 +48,7 @@ export default {
       goToProfile() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
         router.push({ name: "Profile", params: { id: props.keep.creator.id } })
+
       },
 
 
@@ -77,7 +80,7 @@ export default {
 }
 .kep-hover {
   //   display: flex;
-  //   align-items: flex-end;
+  //   align-items: f;
   transition: all 0.4s ease-in-out;
 }
 
