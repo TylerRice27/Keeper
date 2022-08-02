@@ -1,12 +1,11 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="d-flex col-md-12 mt-4">
-        <div class="mt-3">
-          <h1 class="p-1">{{ vault.name }}</h1>
-          <p class="p-1">Keeps: {{ vaultKeeps.length }}</p>
-        </div>
+      <div class="col-md-12 d-flex justify-content-between mt-4">
+        <h1 class="p-1">{{ vault.name }}</h1>
+        <button class="btn btn-secondary me-3">Delete Vault</button>
       </div>
+      <p class="p-1 m-3">Keeps: {{ vaultKeeps.length }}</p>
     </div>
     <!-- <div v-for="v in vaultKeeps" :key="v.id"> -->
     <div class="mt-5 masonry-with-columns">
@@ -74,9 +73,6 @@ body {
     display: inline-block;
     width: 100%;
     text-align: center;
-    font-family: system-ui;
-    font-weight: 900;
-    font-size: 2rem;
   }
   @for $i from 1 through 36 {
     div:nth-child(#{$i}) {
