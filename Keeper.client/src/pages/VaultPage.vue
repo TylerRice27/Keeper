@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-md-12 d-flex justify-content-between mt-4">
         <h1 class="p-1">{{ vault.name }}</h1>
-        <button class="btn btn-secondary me-3">Delete Vault</button>
+        <button @click="deleteVault" class="btn btn-secondary me-3">
+          Delete Vault
+        </button>
       </div>
       <p class="p-1 m-3">Keeps: {{ vaultKeeps.length }}</p>
     </div>
@@ -39,7 +41,6 @@ export default {
       try {
         await vaultKeepsService.getKeepsInVaults(route.params.id)
         await vaultsService.getThisVault(route.params.id)
-
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')
@@ -47,7 +48,20 @@ export default {
     })
     return {
       vaultKeeps: computed(() => AppState.vaultKeeps),
-      vault: computed(() => AppState.activeVault)
+      vault: computed(() => AppState.activeVault),
+
+
+      async deleteVault() {
+        try {
+          if (await Pop.confirm('Delete Vault?', 'are you sure you want to delete?', 'info', 'Yes Delete')) {
+            await vaultsService.deleteVault(route.params.id)
+            Pop.toast("Vault Deleted")
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
 
     }
   }

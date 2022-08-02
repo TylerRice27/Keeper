@@ -19,6 +19,12 @@ class VaultsService {
 
     }
 
+    async deleteVault(id) {
+        const res = await api.delete('api/vaults/' + id)
+        logger.log('Delete this vault', res.data)
+        AppState.vaults = res.data
+    }
+
 
 
 }
