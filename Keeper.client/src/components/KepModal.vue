@@ -106,11 +106,11 @@ export default {
 
       goToProfile() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
-        if (activeKeep.creator.id != account.id) {
-          router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })
+        // if (activeKeep.creator.id != account.id) {
+        router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })
 
-        }
-        router.push({ name: "Account", params: { id: this.activeKeep.creator.id } })
+        // }
+        // router.push({ name: "Account", params: { id: this.activeKeep.creator.id } })
       },
       // async getMyVaults() {
       //   try {

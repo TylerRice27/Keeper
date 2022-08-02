@@ -17,7 +17,7 @@ class VaultKeepsService {
             vaultId: vaultId,
             keepId: keepId
         }
-        const res = await api.post('api/vaultkeeps/' + data)
+        const res = await api.post('api/vaultkeeps', data)
         logger.log('Create keep in a Vault', res.data)
 
         AppState.vaultKeeps.push(res.data)

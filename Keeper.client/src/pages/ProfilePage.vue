@@ -22,8 +22,11 @@
       </div>
     </div>
     <div class="row">
-      <Vault v-for="v in vaults" :key="v.id" :vault="v" />
+      <Vault v-for="v in myVaults" :key="v.id" :vault="v" />
     </div>
+    <!-- <div v-else="v.creatorId != account.id" class="row">
+      <Vault v-for="v in myVaults" :key="v.id" :vault="v" />
+    </div> -->
     <div class="row">
       <div class="col-md-12 mt-5 d-flex">
         <h1>Keeps</h1>
@@ -67,13 +70,13 @@ export default {
     const route = useRoute();
     onMounted(async () => {
       try {
-        // if (route.params.id != account.id) {
-        await profilesService.getProfile(route.params.id),
-          // }
-          // await accountService.getMyVaults(route.params.id),
+        if (route.params.id != AppState.account.id) {
+          await profilesService.getProfile(route.params.id)
           await profilesService.getUsersVaults(route.params.id),
-          await profilesService.getUsersKeeps(route.params.id)
-
+            await profilesService.getUsersKeeps(route.params.id)
+        } else {
+          await accountService.getMyVaults(route.params.id)
+        }
 
         //   await keepsService.getAll()
       } catch (error) {
@@ -87,6 +90,7 @@ export default {
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
       keeps: computed(() => AppState.keeps),
+      myVaults: computed(() => AppState.myVaults),
       vaults: computed(() => AppState.vaults)
 
     };
