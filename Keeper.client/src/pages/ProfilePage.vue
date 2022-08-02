@@ -107,9 +107,6 @@ body {
     display: inline-block;
     width: 100%;
     text-align: center;
-    font-family: system-ui;
-    font-weight: 900;
-    font-size: 2rem;
   }
   @for $i from 1 through 36 {
     div:nth-child(#{$i}) {
