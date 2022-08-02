@@ -16,6 +16,7 @@ import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
 import { keepsService } from '../services/KeepsService'
 import { AppState } from '../AppState'
+import { accountService } from '../services/AccountService'
 
 export default {
   name: 'Home',
@@ -23,6 +24,7 @@ export default {
     onMounted(async () => {
       try {
         await keepsService.getAll();
+        // await accountService.getMyVaults();
       } catch (error) {
         logger.error(error);
         Pop.toast(error.message, 'error');
