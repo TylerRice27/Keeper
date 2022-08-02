@@ -52,7 +52,7 @@ export default {
       //   vaults: computed(() => AppState.vaults),
       async createVault() {
         try {
-
+          debugger
           await vaultsService.createVault(editable.value)
           Modal.getOrCreateInstance(document.getElementById("create-vault")).hide()
           Pop.toast('Vault Created!')

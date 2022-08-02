@@ -20,9 +20,14 @@
             justify-content-center
           "
         >
-          <i class="mdi mdi-eye text-primary">
-            <span class="m-1 text-dark">{{ activeKeep.views }}</span></i
-          >
+          <div>
+            <i class="mdi mdi-eye text-primary p-2">
+              <span class="m-1 text-dark">{{ activeKeep.views }}</span></i
+            >
+            <i class="mdi mdi-lock text-primary p-2">
+              <span class="m-1 text-dark">{{ activeKeep.kept }}</span></i
+            >
+          </div>
           <h3 class="mb-5 mt-5">
             {{ activeKeep.name }}
           </h3>
@@ -124,9 +129,9 @@ export default {
 
       async createVaultKeep(activeKeepId, vaultId) {
         try {
-          debugger
+
           const res = await vaultKeepsService.createVaultKeep(activeKeepId, vaultId)
-          logger.log('this is my vault id')
+          this.activeKeep.kept++
         } catch (error) {
           Pop.toast(error.message)
           logger.error(error)
