@@ -74,6 +74,7 @@ import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { useRoute } from 'vue-router'
 import { keepsService } from '../services/KeepsService.js'
+import { vaultKeepsService } from '../services/VaultKeepsService'
 
 export default {
   setup(props) {
@@ -87,9 +88,20 @@ export default {
       vaults: computed(() => AppState.vaults),
 
 
+      async createVaultKeep(id) {
+        try {
+
+          const res = await vaultKeepsService.createVaultKeep(id)
+        } catch (error) {
+          Pop.toast(error.message)
+          logger.error(error)
+        }
+      },
+
+
       async deleteKeep(id) {
         try {
-          debugger
+
           const res = await keepsService.deleteKeep(id)
         } catch (error) {
           Pop.toast(error.message)

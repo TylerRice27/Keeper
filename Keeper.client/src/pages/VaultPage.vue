@@ -5,7 +5,7 @@
         <div class="mt-3">
           <h1 class="p-1">{{ vault.name }}</h1>
         </div>
-        {{ vaults }}
+        {{ keeps }}
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@ import { vaultKeepsService } from '../services/VaultKeepsService'
 import { AppState } from '../AppState';
 
 export default {
-  name: 'VaultPage',
+  name: 'Vault',
   setup(props) {
     const route = useRoute();
     onMounted(async () => {

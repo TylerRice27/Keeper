@@ -44,6 +44,6 @@ export default {
 @import "./assets/scss/main.scss";
 
 main {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 </style>
