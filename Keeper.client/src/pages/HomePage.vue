@@ -1,5 +1,5 @@
 <template>
-  <div class="masonry-with-flex">
+  <div class="masonry-with-columns">
     <Kep
       v-for="k in keeps"
       :key="k.id"
@@ -46,18 +46,21 @@ body {
   margin: 0;
   padding: 1rem;
 }
-.masonry-with-flex {
-  display: flex;
-  // columns: 4 200px;
-  // If I put this on I get Massive Ugly Side Scroll
-  // flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 1000px;
-  .kep {
+
+.masonry-with-columns {
+  columns: 6 200px;
+  column-gap: 1rem;
+  div {
     width: 150px;
     background: #ec985a;
     color: white;
     margin: 0 1rem 1rem 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 900;
+    font-size: 2rem;
   }
   @for $i from 1 through 36 {
     div:nth-child(#{$i}) {

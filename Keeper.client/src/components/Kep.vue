@@ -3,7 +3,6 @@
   <!-- put the words on the bottom -->
   <div
     class="
-      m-3
       p-4
       kep-hover
       card

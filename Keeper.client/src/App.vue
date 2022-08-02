@@ -42,4 +42,8 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+main {
+  overflow-x: hidden;
+}
 </style>
