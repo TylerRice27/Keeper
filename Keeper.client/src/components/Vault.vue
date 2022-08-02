@@ -4,9 +4,8 @@
   <div
     class="
       col-md-2
-      m-3
+      m-2
       p-4
-      kep-hover
       card
       elevation-3
       bg-secondary
@@ -71,14 +70,5 @@ export default {
 .profile-pic {
   height: 38px;
   width: 38px;
-}
-.kep-hover {
-  //   display: flex;
-  //   align-items: flex-end;
-  transition: all 4s ease-in-out;
-}
-
-.kep-hover:hover {
-  transform: scale(1);
 }
 </style>
