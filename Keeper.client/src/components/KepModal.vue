@@ -45,6 +45,7 @@
           <ul class="dropdown-menu">
             <li>
               <a
+                @click="createVaultKeep(activeKeep.id, v.id)"
                 v-for="v in myVaults"
                 :key="v.id"
                 :vault="v"
@@ -105,7 +106,11 @@ export default {
 
       goToProfile() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
-        router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })
+        if (activeKeep.creator.id != account.id) {
+          router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })
+
+        }
+        router.push({ name: "Account", params: { id: this.activeKeep.creator.id } })
       },
       // async getMyVaults() {
       //   try {
@@ -117,10 +122,11 @@ export default {
       //   }
       // },
 
-      async createVaultKeep(id) {
+      async createVaultKeep(activeKeepId, vaultId) {
         try {
-
-          const res = await vaultKeepsService.createVaultKeep(id)
+          debugger
+          const res = await vaultKeepsService.createVaultKeep(activeKeepId, vaultId)
+          logger.log('this is my vault id')
         } catch (error) {
           Pop.toast(error.message)
           logger.error(error)

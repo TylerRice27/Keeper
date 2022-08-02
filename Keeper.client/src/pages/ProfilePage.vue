@@ -57,6 +57,7 @@ import Pop from '../utils/Pop';
 import { logger } from '../utils/Logger';
 import { profilesService } from '../services/ProfilesService'
 import { keepsService } from '../services/KeepsService';
+import { accountService } from '../services/AccountService';
 
 
 
@@ -66,9 +67,13 @@ export default {
     const route = useRoute();
     onMounted(async () => {
       try {
+        // if (route.params.id != account.id) {
         await profilesService.getProfile(route.params.id),
+          // }
+          // await accountService.getMyVaults(route.params.id),
           await profilesService.getUsersVaults(route.params.id),
           await profilesService.getUsersKeeps(route.params.id)
+
 
         //   await keepsService.getAll()
       } catch (error) {
