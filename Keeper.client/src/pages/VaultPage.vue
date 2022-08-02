@@ -5,7 +5,6 @@
         <div class="mt-3">
           <h1 class="p-1">{{ vault.name }}</h1>
         </div>
-        {{ keeps }}
       </div>
     </div>
   </div>
@@ -18,6 +17,7 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import { vaultKeepsService } from '../services/VaultKeepsService'
 import { AppState } from '../AppState';
+import { vaultsService } from '../services/VaultsService';
 
 export default {
   name: 'Vault',
@@ -27,6 +27,7 @@ export default {
 
       try {
         await vaultKeepsService.getKeepsInVaults(route.params.id)
+        await vaultsService.getThisVault(route.params.id)
 
       } catch (error) {
         logger.error(error)
@@ -34,8 +35,8 @@ export default {
       }
     })
     return {
-      keeps: computed(() => AppState.keeps),
-      vault: computed(() => AppState.vaults),
+      vaultKeeps: computed(() => AppState.vaultKeeps),
+      vault: computed(() => AppState.activeVault)
 
     }
   }

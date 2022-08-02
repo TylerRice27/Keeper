@@ -6,6 +6,11 @@ import { api } from "./AxiosService"
 
 class VaultsService {
 
+
+    async getThisVault(vaultId) {
+        const res = await api.get('api/vaults/' + vaultId)
+        AppState.activeVault = res.data
+    }
     async createVault(body) {
         const res = await api.post('api/vaults', body)
         logger.log('Create a Vault', res.data)
