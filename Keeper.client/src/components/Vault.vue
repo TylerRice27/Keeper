@@ -39,6 +39,10 @@ export default {
 
       goToVaultPage() {
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
+
+        //    if () {
+
+        //    }
         router.push({ name: "Vault", params: { id: props.vault.id } })
       },
 
