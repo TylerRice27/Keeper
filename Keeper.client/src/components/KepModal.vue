@@ -20,6 +20,9 @@
             justify-content-center
           "
         >
+          <i class="mdi mdi-eye text-primary">
+            <span class="m-1 text-dark">{{ activeKeep.views }}</span></i
+          >
           <h3 class="mb-5 mt-5">
             {{ activeKeep.name }}
           </h3>
