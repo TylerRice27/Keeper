@@ -90,7 +90,6 @@ namespace Keeper.Repositories
             return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) =>
             {
                 vault.Creator = profile;
-
                 return vault;
             }, new { id }).ToList();
         }

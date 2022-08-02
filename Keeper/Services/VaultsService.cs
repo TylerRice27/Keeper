@@ -120,14 +120,14 @@ namespace Keeper.Services
             return _repo.GetMyVaults(accountId);
         }
 
-        internal List<Vault> GetVaultsByCreatorId(string id)
+        internal List<Vault> GetVaultsByCreatorId(string id, string userId)
         {
 
 
             List<Vault> found = _repo.GetAllVaultsByCreatorId(id);
 
 
-            return found.FindAll(f => f.IsPrivate == false);
+            return found.FindAll(f => f.IsPrivate == false || f.CreatorId == userId);
         }
     }
 }
