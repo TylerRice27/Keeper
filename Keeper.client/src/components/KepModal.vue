@@ -42,7 +42,7 @@
           <ul class="dropdown-menu">
             <li>
               <a
-                v-for="v in vaults"
+                v-for="v in myVaults"
                 :key="v.id"
                 :vault="v"
                 class="dropdown-item"
@@ -51,12 +51,17 @@
               >
             </li>
           </ul>
+
           <i
             @click="deleteKeep(activeKeep.id)"
             class="mdi mdi-delete text-danger fs-4"
           ></i>
           <div>
-            <img class="profile-picture" :src="activeKeep.creator?.picture" />
+            <img
+              class="profile-picture"
+              @click="goToProfile"
+              :src="activeKeep.creator?.picture"
+            />
             <span class="p-2">{{ activeKeep.creator?.name }}</span>
           </div>
         </div>
@@ -75,8 +80,12 @@ import Pop from '../utils/Pop.js'
 import { useRoute } from 'vue-router'
 import { keepsService } from '../services/KeepsService.js'
 import { vaultKeepsService } from '../services/VaultKeepsService'
+import { accountService } from '../services/AccountService.js'
+import { Modal } from 'bootstrap'
+import { router } from '../router.js'
 
 export default {
+  // props: { keep: { type: Object, required: true } },
   setup(props) {
     const keep = reactive({ keepId: '' })
     const route = useRoute()
@@ -86,7 +95,21 @@ export default {
       activeKeep: computed(() => AppState.activeKeep),
       account: computed(() => AppState.account),
       vaults: computed(() => AppState.vaults),
+      myVaults: computed(() => AppState.myVaults),
 
+      goToProfile() {
+        Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
+        router.push({ name: "Profile", params: { id: this.activeKeep.creator.id } })
+      },
+      // async getMyVaults() {
+      //   try {
+      //     const res = await accountService.getMyVaults()
+
+      //   } catch (error) {
+      //     Pop.toast(error.message, 'error')
+      //     logger.error(error)
+      //   }
+      // },
 
       async createVaultKeep(id) {
         try {
