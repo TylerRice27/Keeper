@@ -8,17 +8,15 @@
       p-4
       card
       elevation-3
+      justify-content-end
       bg-secondary
       selectable
-      img-fluid
       lighten-20
-      d-flex
-      justify-content-end
     "
     @click="goToVaultPage"
     :style="`background-image: url(${vault.img});`"
   >
-    <h6 class="text-light">
+    <h6 class="text-light text-center mt-4">
       {{ vault.name }}
     </h6>
   </div>
@@ -63,9 +61,9 @@ export default {
 
 
 <style lang="scss" scoped>
-// .card {
-//   height: 30vh;
-// }
+.card {
+  height: 19vh;
+}
 
 .profile-pic {
   height: 38px;
