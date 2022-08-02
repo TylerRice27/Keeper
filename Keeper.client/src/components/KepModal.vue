@@ -54,6 +54,7 @@
 
           <i
             @click="deleteKeep(activeKeep.id)"
+            v-show="activeKeep.creatorId == account.id"
             class="mdi mdi-delete text-danger fs-4"
           ></i>
           <div>

@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-md-12 d-flex justify-content-between mt-4">
         <h1 class="p-1">{{ vault.name }}</h1>
-        <button @click="deleteVault" class="btn btn-secondary me-3">
+        <button
+          v-show="vault.creatorId == account.id"
+          @click="deleteVault"
+          class="btn btn-secondary me-3"
+        >
           Delete Vault
         </button>
       </div>
@@ -49,6 +53,7 @@ export default {
     return {
       vaultKeeps: computed(() => AppState.vaultKeeps),
       vault: computed(() => AppState.activeVault),
+      account: computed(() => AppState.account),
 
 
       async deleteVault() {
