@@ -33,7 +33,14 @@ namespace Keeper.Services
             }
 
             // return exists;
+            // Trying to increment kep
+            // VaultKeep keep = _repo.Create(vaultKeepData);
+            // keep.KeepId++;
+            // keep.VaultId++;
+            // return keep;
+
             return _repo.Create(vaultKeepData);
+
         }
 
         internal List<VaultKeepViewModel> GetByVaultId(int id, string userId)
