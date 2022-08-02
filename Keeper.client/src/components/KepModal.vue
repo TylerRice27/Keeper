@@ -124,8 +124,10 @@ export default {
 
       async deleteKeep(id) {
         try {
-
-          const res = await keepsService.deleteKeep(id)
+          if (await Pop.confirm('Delete Keep?', 'are you sure you want to delete?', 'info', 'Yes Delete')) {
+            const res = await keepsService.deleteKeep(id)
+            Pop.toast("Keep Deleted")
+          }
         } catch (error) {
           Pop.toast(error.message)
           logger.error(error)

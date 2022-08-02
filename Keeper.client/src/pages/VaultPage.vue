@@ -5,13 +5,18 @@
         <div class="mt-3">
           <h1 class="p-1">{{ vault.name }}</h1>
           <p class="p-1">Keeps: {{ vaultKeeps.length }}</p>
-          {{ vaultKeeps }}
         </div>
       </div>
     </div>
     <!-- <div v-for="v in vaultKeeps" :key="v.id"> -->
     <div class="mt-5 masonry-with-columns">
-      <Kep v-for="v in vaultKeeps" :key="v.id" :keep="v" />
+      <Kep
+        v-for="v in vaultKeeps"
+        :key="v.id"
+        :keep="v"
+        data-bs-toggle="modal"
+        data-bs-target="#vault-details"
+      />
     </div>
     <!-- </div> -->
   </div>

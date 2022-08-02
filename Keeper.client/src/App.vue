@@ -24,6 +24,13 @@
         <KepModal />
       </template>
     </Modal>
+
+    <Modal id="vault-details">
+      <template #header>{{ activeKeep.name }}</template>
+      <template #body>
+        <VaultModal />
+      </template>
+    </Modal>
   </main>
 </template>
 
