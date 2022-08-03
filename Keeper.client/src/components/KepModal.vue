@@ -37,7 +37,15 @@
       <!-- Maybe put an offset here later -->
       <div class="row-reverse">
         <div
-          class="col-md-12 d-flex offset-2 justify-content-evenly dropdown pb-2"
+          class="
+            col-md-12
+            p-2
+            d-flex
+            offset-2
+            justify-content-evenly
+            dropdown
+            pb-2
+          "
         >
           <button
             class="btn btn-primary dropdown-toggle"
