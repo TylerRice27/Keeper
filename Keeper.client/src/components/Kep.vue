@@ -16,8 +16,8 @@
     @click="setActive"
     :style="`background-image: url(${keep.img});`"
   >
-    <div class="col-md-12">
-      <h6 class="text-light">
+    <div class="">
+      <h6 class="text-light d-flex justify-content-between">
         {{ keep.name }}
         <img
           class="profile-pic rounded-pill"
