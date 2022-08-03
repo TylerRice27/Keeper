@@ -132,6 +132,7 @@ export default {
 
           const res = await vaultKeepsService.createVaultKeep(activeKeepId, vaultId)
           this.activeKeep.kept++
+          Pop.toast("Added to Vault", "success")
         } catch (error) {
           Pop.toast(error.message)
           logger.error(error)

@@ -29,7 +29,7 @@
 
 <script>
 import { computed, onMounted } from '@vue/runtime-core';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import { vaultKeepsService } from '../services/VaultKeepsService'
@@ -39,6 +39,7 @@ import { vaultsService } from '../services/VaultsService';
 export default {
   name: 'Vault',
   setup(props) {
+    const router = useRouter();
     const route = useRoute();
     onMounted(async () => {
 
@@ -46,6 +47,10 @@ export default {
 
         await vaultKeepsService.getKeepsInVaults(route.params.id)
         await vaultsService.getThisVault(route.params.id)
+        // if (vault.creator.id == account.id || vault.isPrivate == false) {
+
+        //   router.push({ name: "Home" })
+        // }
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')

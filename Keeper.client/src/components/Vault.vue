@@ -38,10 +38,14 @@ export default {
     return {
 
       goToVaultPage() {
+
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
+        // if (vault.creatorId == account.id || vault.isPrivate == false) {
 
-
+        //   router.push({ name: "Home" })
+        // }
         router.push({ name: "Vault", params: { id: props.vault.id } })
+
       },
 
 
