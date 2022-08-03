@@ -40,6 +40,10 @@ export default {
       goToVaultPage() {
 
         Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
+        // if (account.id != vault.creatorId || vault.isPrivate == true) {
+
+        //   router.push({ name: 'Home' })
+        // }
         // if (vault.creatorId == account.id || vault.isPrivate == false) {
 
         //   router.push({ name: "Home" })

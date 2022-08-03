@@ -45,12 +45,16 @@ export default {
 
       try {
 
+        // await vaultsService.getThisVault(route.params.id)
+        // await vaultKeepsService.getKeepsInVaults(route.params.id)
+        // NOTE Try to figure this router push out tommorow 
+        // And ask why it cant define my computed's
+        // if (account.id != vault.creatorId || vault.isPrivate == true) {
+
+        //   router.push({ name: 'Home' })
+        // }
         await vaultsService.getThisVault(route.params.id)
         await vaultKeepsService.getKeepsInVaults(route.params.id)
-        // if (AppState.activeVault == AppState.account || vault.isPrivate == false) {
-
-        //   router.push({ name: "Home" })
-        // }
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')
