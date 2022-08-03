@@ -12,9 +12,12 @@ class KeepsService {
     }
 
     async setActive(keep) {
-        AppState.activeKeep = keep
         const res = await api.get(`api/keeps/${keep.id}`)
         logger.log("open this keep modal", res.data)
+
+
+        AppState.activeKeep = keep
+
         keep.views++
 
 

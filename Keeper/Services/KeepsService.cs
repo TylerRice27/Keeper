@@ -29,15 +29,16 @@ namespace Keeper.Services
         internal Keep Get(int id)
         {
             Keep foundKeep = _repo.Get(id);
+
             if (foundKeep == null)
             {
                 throw new Exception("Invaild Id");
             }
-            foundKeep.Views++;
+            _repo.increaseView(foundKeep);
+            // foundKeep.Views++;
 
             return foundKeep;
         }
-
         internal Keep Edit(Keep keep)
         {
             Keep original = Get(keep.Id);
@@ -45,6 +46,9 @@ namespace Keeper.Services
             {
                 throw new Exception("You can not edit this Keep, You don't own this Keep");
             }
+
+            // original.Views++;
+            original.Views = keep.Views ?? original.Views;
             original.Name = keep.Name ?? original.Name;
             original.Description = keep.Description ?? original.Description;
             original.Img = keep.Img ?? original.Img;
@@ -54,6 +58,7 @@ namespace Keeper.Services
 
 
         }
+
 
         internal List<Keep> GetKeepsByCreatorId(string id)
         {

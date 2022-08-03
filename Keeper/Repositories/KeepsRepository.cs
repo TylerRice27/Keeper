@@ -29,19 +29,41 @@ namespace Keeper.Repositories
 
         }
 
-        internal Keep Get(int id)
+        internal void increaseView(Keep keep)
         {
             string sql = @"
+            UPDATE keeps
+            SET 
+
+            views = @Views + 1
+
+            WHERE id =@Id;";
+            _db.Execute(sql, keep);
+
+
+        }
+
+        internal Keep Get(int id)
+        {
+
+
+            string sql = @"
+
+
             SELECT
             a.*,
             k.*
             FROM keeps k
             JOIN accounts a ON a.id = k.creatorId
-            WHERE k.id = @id";
+            WHERE k.id = @id"
+            ;
             return _db.Query<Profile, Keep, Keep>(sql, (prof, keep) =>
             {
                 keep.Creator = prof;
                 keep.Kept++;
+
+
+
                 return keep;
             }, new { id }).FirstOrDefault();
         }
@@ -83,6 +105,7 @@ namespace Keeper.Repositories
             UPDATE keeps
             SET 
             name = @Name,
+            views = @Views,
             description = @Description,
             img = @Img
             WHERE id =@Id;";
