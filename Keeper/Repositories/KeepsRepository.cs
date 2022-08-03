@@ -74,7 +74,7 @@ namespace Keeper.Repositories
             return _db.Query<Profile, Keep, Keep>(sql, (prof, keep) =>
             {
                 keep.Creator = prof;
-                keep.Kept++;
+                // keep.Kept++;
 
 
 
