@@ -3,7 +3,7 @@
   <!-- put the words on the bottom -->
   <div
     class="
-      p-4
+      p-2
       kep-hover
       card
       elevation-3
