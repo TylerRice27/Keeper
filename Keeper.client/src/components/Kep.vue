@@ -19,12 +19,14 @@
     <div class="">
       <h6 class="text-light d-flex justify-content-between">
         {{ keep.name }}
-        <img
-          class="profile-pic rounded-pill"
-          @click.stop="goToProfile"
-          :src="keep.creator?.picture"
-          alt=""
-        />
+        <a href="Profile">
+          <img
+            class="profile-pic rounded-pill"
+            @click.stop="goToProfile"
+            :src="keep.creator?.picture"
+            alt=""
+          />
+        </a>
       </h6>
     </div>
   </div>

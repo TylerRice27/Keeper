@@ -20,6 +20,7 @@ class VaultKeepsService {
         const res = await api.post('api/vaultkeeps', data)
         logger.log('Create keep in a Vault', res.data)
         AppState.vaultKeeps.push(res.data)
+        AppState.activeKeep.kept++
         return res.data
     }
 
