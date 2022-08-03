@@ -68,7 +68,7 @@
           ></i>
           <div>
             <img
-              class="profile-picture"
+              class="profile-picture selectable"
               @click="goToProfile"
               :src="activeKeep.creator?.picture"
             />
