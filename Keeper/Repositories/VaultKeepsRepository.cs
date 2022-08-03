@@ -26,7 +26,7 @@ namespace Keeper.Repositories
             ";
             int id = _db.ExecuteScalar<int>(sql, vaultKeepData);
             vaultKeepData.Id = id;
-            // vaultKeepData.KeepId++;
+            // vaultKeepData.KeepId
             return vaultKeepData;
         }
 

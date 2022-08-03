@@ -8,11 +8,14 @@ namespace Keeper.Services
     public class VaultKeepsService
     {
         private readonly VaultsRepository _vr;
+
+        private readonly KeepsRepository _kr;
         private readonly VaultKeepsRepository _repo;
 
-        public VaultKeepsService(VaultsRepository vr, VaultKeepsRepository repo)
+        public VaultKeepsService(VaultsRepository vr, KeepsRepository kr, VaultKeepsRepository repo)
         {
             _vr = vr;
+            _kr = kr;
             _repo = repo;
         }
 
@@ -21,6 +24,15 @@ namespace Keeper.Services
             // VaultKeep exists = _repo.Create(vaultKeepData);
             // vaultKeepData.Id = exists.Id;
             Vault vault = _vr.Get(vaultKeepData.VaultId);
+
+
+
+            // NOTE testing for kept increase
+            Keep keep = _kr.Get(vaultKeepData.KeepId);
+
+            _kr.increaseKept(keep);
+
+
             // if (vault == null)
             // {
             //     // return exists;

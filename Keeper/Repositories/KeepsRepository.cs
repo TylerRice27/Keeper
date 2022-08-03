@@ -29,6 +29,20 @@ namespace Keeper.Repositories
 
         }
 
+        internal void increaseKept(Keep keep)
+        {
+            string sql = @"
+            UPDATE keeps
+            SET 
+
+            kept = @Kept + 1
+
+            WHERE id =@Id;";
+            _db.Execute(sql, keep);
+
+
+        }
+
         internal void increaseView(Keep keep)
         {
             string sql = @"
