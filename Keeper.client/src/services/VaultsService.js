@@ -1,4 +1,5 @@
 import { AppState } from "../AppState"
+import { router } from "../router"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
@@ -34,6 +35,7 @@ class VaultsService {
         const res = await api.delete('api/vaults/' + id)
         logger.log('Delete this vault', res.data)
         AppState.vaults = res.data
+
     }
 
 

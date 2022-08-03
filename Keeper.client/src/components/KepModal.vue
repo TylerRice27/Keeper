@@ -4,7 +4,7 @@
     <div class="row text-center">
       <div class="col-md-4">
         <img
-          class="m-2 img-fluid"
+          class="p-1 img-fluid"
           :src="activeKeep.img"
           :alt="activeKeep.name + ' picture'"
         />
@@ -66,7 +66,7 @@
             v-show="activeKeep.creatorId == account.id"
             class="mdi mdi-delete text-danger fs-4"
           ></i>
-          <div>
+          <div class="pe-4">
             <img
               class="profile-picture selectable"
               @click="goToProfile"
@@ -144,6 +144,7 @@ export default {
         try {
           if (await Pop.confirm('Delete Keep?', 'are you sure you want to delete?', 'info', 'Yes Delete')) {
             const res = await keepsService.deleteKeep(id)
+            Modal.getOrCreateInstance(document.getElementById('keep-details')).hide()
             Pop.toast("Keep Deleted")
           }
         } catch (error) {

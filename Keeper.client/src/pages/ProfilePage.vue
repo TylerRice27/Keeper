@@ -21,7 +21,7 @@
         ></i>
       </div>
     </div>
-    <div class="row">
+    <div class="row m-2">
       <Vault v-for="v in profileVaults" :key="v.id" :vault="v" />
     </div>
     <!-- <div v-else="v.creatorId != account.id" class="row">
