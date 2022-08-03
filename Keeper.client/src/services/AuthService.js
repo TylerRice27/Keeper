@@ -1,12 +1,16 @@
 import { initialize } from '@bcwdev/auth0provider-client'
+
 import { AppState } from '../AppState'
 import { audience, clientId, domain } from '../env'
 import { router } from '../router'
 import { accountService } from './AccountService'
 import { api } from './AxiosService'
 import { socketService } from './SocketService'
+import { vaultKeepsService } from './VaultKeepsService'
+import { vaultsService } from './VaultsService'
 
 export const AuthService = initialize({
+
   domain,
   clientId,
   audience,
@@ -29,6 +33,10 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   // NOTE if there is something you want to do once the user is authenticated, place that here
 
   await accountService.getMyVaults();
+
+  // await vaultKeepsService.getKeepsInVaults(route.params.id);
+  // await vaultsService.getThisVault(rou.params.id);
+
 })
 
 async function refreshAuthToken(config) {

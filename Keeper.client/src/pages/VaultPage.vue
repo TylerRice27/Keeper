@@ -43,6 +43,7 @@ export default {
     onMounted(async () => {
 
       try {
+
         await vaultKeepsService.getKeepsInVaults(route.params.id)
         await vaultsService.getThisVault(route.params.id)
       } catch (error) {
