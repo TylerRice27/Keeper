@@ -31,7 +31,7 @@
           <h3 class="mb-5 mt-5">
             {{ activeKeep.name }}
           </h3>
-          <p>{{ activeKeep.description }}</p>
+          <p class="text-start">{{ activeKeep.description }}</p>
         </div>
       </div>
       <!-- Maybe put an offset here later -->

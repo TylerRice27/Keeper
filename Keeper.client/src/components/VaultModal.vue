@@ -22,13 +22,21 @@
           <h3 class="mb-5 mt-5">
             {{ activeKeep.name }}
           </h3>
-          <p>{{ activeKeep.description }}</p>
+          <p class="text-start">{{ activeKeep.description }}</p>
         </div>
       </div>
       <!-- Maybe put an offset here later -->
       <div class="row-reverse">
         <div
-          class="col-md-12 d-flex offset-2 justify-content-evenly dropdown pb-2"
+          class="
+            col-md-12
+            d-flex
+            p-2
+            offset-2
+            justify-content-evenly
+            dropdown
+            pb-2
+          "
         >
           <button
             v-show="activeKeep.creator?.id == account.id"
