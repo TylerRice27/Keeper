@@ -31,7 +31,7 @@
           class="col-md-12 d-flex offset-2 justify-content-evenly dropdown pb-2"
         >
           <button
-            v-show="activeKeep.creatorId == account.id"
+            v-show="activeKeep.creator?.id == account.id"
             @click="removeVaultKeep(activeKeep.vaultKeepId)"
             class="btn btn-secondary"
             type="button"

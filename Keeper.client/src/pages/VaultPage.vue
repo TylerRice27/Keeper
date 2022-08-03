@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="">
       <div class="col-md-12 d-flex justify-content-between mt-4">
         <h1 class="p-1">{{ vault.name }}</h1>
         <button
@@ -83,7 +83,7 @@ body {
 }
 
 .masonry-with-columns {
-  columns: 6 200px;
+  columns: 4 200px;
   column-gap: 1rem;
   div {
     width: 150px;
