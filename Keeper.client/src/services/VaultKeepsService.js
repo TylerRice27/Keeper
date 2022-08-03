@@ -1,14 +1,25 @@
 import { AppState } from "../AppState"
+import { router } from "../router"
 import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 import { api } from "./AxiosService"
 
 
 class VaultKeepsService {
 
     async getKeepsInVaults(vaultId) {
-        const res = await api.get(`api/vaults/${vaultId}/keeps`)
-        logger.log('Get Keeps in this Vault', res.data)
-        AppState.vaultKeeps = res.data
+        try {
+
+            const res = await api.get(`api/vaults/${vaultId}/keeps`)
+            logger.log('Get Keeps in this Vault', res.data)
+            AppState.vaultKeeps = res.data
+
+        } catch (error) {
+
+            router.push({ name: 'Home' })
+            Pop.toast(error, "error")
+        }
+
 
     }
 

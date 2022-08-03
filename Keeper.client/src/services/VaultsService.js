@@ -10,9 +10,7 @@ class VaultsService {
 
     async getThisVault(vaultId) {
 
-        if (vaultId) {
 
-        }
         const res = await api.get('api/vaults/' + vaultId)
 
         AppState.activeVault = res.data
