@@ -23,6 +23,7 @@
         <img
           class="profile-pic rounded-pill"
           @click.stop="goToProfile"
+          :title="keep.creator?.name"
           :src="keep.creator?.picture"
           alt=""
         />

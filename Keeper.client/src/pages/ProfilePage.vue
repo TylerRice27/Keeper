@@ -15,6 +15,7 @@
         <h1>Vaults</h1>
         <i
           @click="createVault"
+          :title="'Create a Vault'"
           data-bs-toggle="modal"
           data-bs-target="#create-vault"
           class="mdi mdi-plus fs-1 text-primary selectable"
@@ -31,7 +32,8 @@
       <div class="col-md-12 mt-5 d-flex">
         <h1>Keeps</h1>
         <i
-          @click="createVault"
+          @click="createKeep"
+          :title="'Create a Keep'"
           data-bs-toggle="modal"
           data-bs-target="#create-keep"
           class="mdi mdi-plus fs-1 text-primary selectable"
