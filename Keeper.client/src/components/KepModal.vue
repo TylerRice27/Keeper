@@ -58,7 +58,7 @@
           <ul class="dropdown-menu">
             <li>
               <a
-                @click="createVaultKeep(activeKeep.id, v.id)"
+                @click.prevent="createVaultKeep(activeKeep.id, v.id)"
                 v-for="v in myVaults"
                 :key="v.id"
                 :vault="v"

@@ -3,7 +3,7 @@
     <div class="row text-center">
       <div class="col-md-4">
         <img
-          class="m-2 img-fluid"
+          class="p-1 img-fluid"
           :src="activeKeep.img"
           :alt="activeKeep.name + ' picture'"
         />

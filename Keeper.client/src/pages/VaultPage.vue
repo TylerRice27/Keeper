@@ -68,6 +68,7 @@ export default {
 
       async deleteVault() {
         try {
+
           if (await Pop.confirm('Delete Vault?', 'are you sure you want to delete?', 'info', 'Yes Delete')) {
             await vaultsService.deleteVault(route.params.id)
             Pop.toast("Vault Deleted")
