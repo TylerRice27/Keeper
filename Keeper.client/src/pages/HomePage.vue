@@ -1,12 +1,6 @@
 <template>
   <div class="mt-5 m-3 masonry-with-columns">
-    <Kep
-      v-for="k in keeps"
-      :key="k.id"
-      :keep="k"
-      data-bs-toggle="modal"
-      data-bs-target="#keep-details"
-    />
+    <Kep v-for="k in keeps" :key="k.id" :keep="k" />
   </div>
 </template>
 

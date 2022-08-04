@@ -53,6 +53,7 @@ export default {
 
           const keep = await keepsService.createKeep(editable.value)
           Modal.getOrCreateInstance(document.getElementById('create-keep')).hide()
+          editable.value = {}
           Pop.toast('Keep Created!')
         } catch (error) {
           Pop.error(error)

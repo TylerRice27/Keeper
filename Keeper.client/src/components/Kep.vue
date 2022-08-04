@@ -17,7 +17,7 @@
     :style="`background-image: url(${keep.img});`"
   >
     <div class="">
-      <h5 class="text-light d-flex justify-content-between">
+      <h5 class="text-light d-flex justify-content-between keep-text">
         {{ keep.name }}
         <!-- <a href="Profile"> -->
         <img
@@ -60,6 +60,10 @@ export default {
         try {
 
           keepsService.setActive(props.keep)
+          if (!props.keep?.vaultKeepId) {
+
+            Modal.getOrCreateInstance(document.getElementById('keep-details')).show()
+          }
         } catch (error) {
           Pop.toast("Something went wrong", "error")
           logger.error(error)
@@ -85,6 +89,9 @@ export default {
   //   display: flex;
   //   align-items: f;
   transition: all 0.4s ease-in-out;
+}
+.keep-text {
+  text-shadow: 3px 1px black;
 }
 
 .kep-hover:hover {

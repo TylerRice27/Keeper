@@ -122,6 +122,11 @@ body {
   padding: 1rem;
 }
 
+.logo {
+  width: 200px;
+  height: 200px;
+}
+
 .masonry-with-columns {
   columns: 4 200px;
   column-gap: 1rem;

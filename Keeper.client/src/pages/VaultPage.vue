@@ -56,6 +56,7 @@ export default {
         await vaultKeepsService.getKeepsInVaults(route.params.id)
         await vaultsService.getThisVault(route.params.id)
       } catch (error) {
+
         logger.error(error)
         Pop.toast(error.message, 'error')
       }

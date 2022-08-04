@@ -62,16 +62,16 @@ namespace Keeper.Controllers
 
 
 
-        [HttpPut("id")]
+        [HttpPut]
         [Authorize]
 
-        public async Task<ActionResult<Account>> EditAccount([FromBody] Account editData, string userEmail)
+        public async Task<ActionResult<Account>> EditAccount([FromBody] Account editData)
         {
             try
             {
                 Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
 
-                Account editAccount = _accountService.Edit(editData, userEmail);
+                Account editAccount = _accountService.Edit(editData, editData.Email);
                 return Ok(editAccount);
 
             }
