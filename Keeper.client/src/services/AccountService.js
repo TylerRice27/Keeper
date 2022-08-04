@@ -14,13 +14,18 @@ class AccountService {
   }
 
   async editAccount(accountData) {
+    try {
 
-    const res = await api.put('/account', accountData)
-    logger.log(res.data)
-    AppState.account = res.data
+      const res = await api.put('/account', accountData)
+      logger.log(res.data)
+      AppState.account = res.data
+
+    } catch (error) {
+
+
+    }
+
   }
-
-
 
   async getMyVaults() {
     try {
