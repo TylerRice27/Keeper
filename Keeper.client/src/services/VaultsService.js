@@ -34,6 +34,7 @@ class VaultsService {
         logger.log('Delete this vault', res.data)
         // AppState.vaults = res.data
         AppState.vaults = AppState.vaults.filter((vault) => vault.id != id)
+
         // router.push({ name: "Profile", params: { id: props.vault.creator.id } })
         router.push({ name: 'Home' })
 

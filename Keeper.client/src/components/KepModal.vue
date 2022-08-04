@@ -73,11 +73,12 @@
             @click="deleteKeep(activeKeep.id)"
             v-show="activeKeep.creatorId == account.id"
             :title="'Delete Keep'"
-            class="mdi mdi-delete text-danger fs-4"
+            class="selectable mdi mdi-delete text-danger fs-4"
           ></i>
           <div class="pe-4">
             <img
               class="profile-picture selectable"
+              :title="'Got to profile page'"
               @click="goToProfile"
               :src="activeKeep.creator?.picture"
             />

@@ -14,6 +14,7 @@
       <div class="col-md-12 mt-5 d-flex">
         <h1>Vaults</h1>
         <i
+          v-show="profile.id == account.id"
           @click="createVault"
           :title="'Create a Vault'"
           data-bs-toggle="modal"
@@ -32,6 +33,7 @@
       <div class="col-md-12 mt-5 d-flex">
         <h1>Keeps</h1>
         <i
+          v-show="profile.id == account.id"
           @click="createKeep"
           :title="'Create a Keep'"
           data-bs-toggle="modal"

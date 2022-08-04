@@ -17,7 +17,7 @@
     :style="`background-image: url(${keep.img});`"
   >
     <div class="">
-      <h6 class="text-light d-flex justify-content-between">
+      <h5 class="text-light d-flex justify-content-between">
         {{ keep.name }}
         <!-- <a href="Profile"> -->
         <img
@@ -28,7 +28,7 @@
           alt=""
         />
         <!-- </a> -->
-      </h6>
+      </h5>
     </div>
   </div>
 </template>

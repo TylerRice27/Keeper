@@ -98,6 +98,7 @@ export default {
         try {
           if (await Pop.confirm('Remove Vault?', 'are you sure you want to remove?', 'info', 'Yes Remove')) {
             const res = await vaultKeepsService.removeVaultKeep(id)
+            Modal.getOrCreateInstance(document.getElementById("vault-details")).hide()
             Pop.toast("Keep Removed")
           }
         } catch (error) {

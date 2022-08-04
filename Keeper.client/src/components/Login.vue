@@ -13,6 +13,7 @@
         class="dropdown-toggle selectable"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        aria-label="User Login"
         id="authDropdown"
       >
         <div class="card bg-secondary">
