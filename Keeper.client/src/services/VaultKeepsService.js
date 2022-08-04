@@ -40,7 +40,7 @@ class VaultKeepsService {
         logger.log('Delete this vaultkeep', res.data)
         // AppState.vaultKeeps = AppState.vaultKeeps.filter(vaultKeeps.id => vaultKeeps.keepId.id != id)
         debugger
-        AppState.vaultKeeps = AppState.vaultKeeps.filter(vaultKeep => vaultKeep.keepId != id)
+        AppState.vaultKeeps = AppState.vaultKeeps.filter(vk => vk.vaultKeepId != id)
         // AppState.profileKeeps = AppState.profileKeeps.filter((profileKeep) => profileKeep.id != id)
 
         // AppState.keeps = AppState.keeps.filter((keep) => keep.id != id)

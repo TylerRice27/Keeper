@@ -18,6 +18,13 @@
       </template>
     </Modal>
 
+    <Modal id="editAccount-form">
+      <template #header>Edit Account</template>
+      <template #body>
+        <AccountForm />
+      </template>
+    </Modal>
+
     <Modal id="keep-details">
       <template #header>{{ activeKeep.name }}</template>
       <template #body>

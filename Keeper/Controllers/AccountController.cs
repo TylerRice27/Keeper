@@ -58,7 +58,32 @@ namespace Keeper.Controllers
 
 
         }
+
+
+
+
+        [HttpPut("id")]
+        [Authorize]
+
+        public async Task<ActionResult<Account>> EditAccount([FromBody] Account editData, string userEmail)
+        {
+            try
+            {
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
+                Account editAccount = _accountService.Edit(editData, userEmail);
+                return Ok(editAccount);
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+        }
     }
+
 
 
 }

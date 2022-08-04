@@ -2,7 +2,15 @@
   <div class="container-fluid">
     <!-- <div class="row"> -->
     <div class="d-flex col-md-12 mt-4">
-      <img class="rounded m-3 img-fluid logo" :src="profile.picture" alt="" />
+      <img
+        class="rounded m-3 img-fluid selectable logo"
+        :src="profile.picture"
+        :title="'Edit Account'"
+        alt=""
+        @click="editAccount"
+        data-bs-toggle="modal"
+        data-bs-target="#editAccount-form"
+      />
       <div class="mt-3">
         <h1 class="p-1">{{ profile.name }}</h1>
         <h3 class="p-1">Vaults: {{ profileVaults.length }}</h3>
