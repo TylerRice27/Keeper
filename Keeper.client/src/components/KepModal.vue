@@ -28,10 +28,10 @@
               <span class="m-1 text-dark">{{ activeKeep.kept }}</span></i
             >
           </div>
-          <h3 class="mb-5 mt-5">
+          <h3 class="mb-5 text-black mt-5">
             {{ activeKeep.name }}
           </h3>
-          <p class="text-start">{{ activeKeep.description }}</p>
+          <p class="text-start text-black">{{ activeKeep.description }}</p>
         </div>
       </div>
       <!-- Maybe put an offset here later -->
@@ -82,7 +82,7 @@
               @click="goToProfile"
               :src="activeKeep.creator?.picture"
             />
-            <span class="p-2">{{ activeKeep.creator?.name }}</span>
+            <span class="p-2 text-dark">{{ activeKeep.creator?.name }}</span>
           </div>
         </div>
       </div>
