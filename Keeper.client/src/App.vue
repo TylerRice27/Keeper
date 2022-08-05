@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="bg-secondary">
     <router-view />
     <Modal id="create-keep">
       <template #header>Create Keep</template>
