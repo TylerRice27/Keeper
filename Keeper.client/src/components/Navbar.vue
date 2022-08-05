@@ -2,11 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="https://w7.pngwing.com/pngs/608/845/png-transparent-k-letter-k-ouml-y-angle-presentation-logo.png"
-          height="45"
-        />
+        <img alt="logo" src="../assets/img/newlogo.png" height="45" />
       </div>
     </router-link>
     <button
