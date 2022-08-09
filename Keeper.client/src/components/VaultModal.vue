@@ -41,7 +41,7 @@
           <button
             v-show="activeKeep.creator?.id == account.id"
             @click="removeVaultKeep(activeKeep.vaultKeepId)"
-            class="btn btn-secondary"
+            class="btn btn-danger"
             type="button"
           >
             Remove From Vault

@@ -1,6 +1,6 @@
 <template>
   <form class="m-2" @submit.prevent="createKeep" id="keep-form">
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <label>Keep Title</label>
       <input
         class="form-control"
@@ -9,11 +9,11 @@
         required
       />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <label>Keep Picture</label>
       <input class="form-control" v-model="editable.img" type="text" required />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <label>Keep Description</label>
       <input
         class="form-control"

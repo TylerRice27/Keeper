@@ -23,7 +23,8 @@ namespace Keeper.Repositories
             a.*,
             v.*
             FROM vaults v
-            JOIN accounts a ON a.id = v.creatorId;";
+            JOIN accounts a ON a.id = v.creatorId;
+            ORDER BY v.createdAt DESC; ";
 
             return _db.Query<Profile, Vault, Vault>(sql, (prof, vault) =>
             {
@@ -85,7 +86,8 @@ namespace Keeper.Repositories
             a.*
             FROM vaults v
             JOIN accounts a ON a.id = v.creatorId
-            WHERE creatorId = @id";
+            WHERE creatorId = @id
+            ORDER BY v.createdAt DESC; ";
 
             return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) =>
             {
@@ -103,6 +105,7 @@ namespace Keeper.Repositories
             FROM vaults v
             JOIN accounts a ON a.id = v.creatorId
             WHERE v.creatorId = @creatorId
+            ORDER BY v.createdAt DESC;
             ";
             return _db.Query<Vault, Profile, Vault>(sql, (vault, prof) =>
             {
