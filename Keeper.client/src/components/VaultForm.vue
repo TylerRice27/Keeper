@@ -1,6 +1,6 @@
 <template>
   <form class="m-2" @submit.prevent="createVault" id="create-vault">
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <label>Title</label>
       <input
         class="form-control"
@@ -9,11 +9,11 @@
         required
       />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <label>Image Url</label>
       <input class="form-control" v-model="editable.img" type="text" required />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <label>Description</label>
       <input
         class="form-control"
@@ -22,7 +22,7 @@
         required
       />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 text-black">
       <input class="m-1" v-model="editable.isPrivate" type="checkbox" />
       <label class="fs-5"> Private?</label>
     </div>
