@@ -88,7 +88,8 @@ namespace Keeper.Repositories
             a.*,
             k.* 
             FROM keeps k
-            JOIN accounts a ON a.id = k.creatorId;";
+            JOIN accounts a ON a.id = k.creatorId
+            ORDER BY k.createdAt DESC;";
             return _db.Query<Profile, Keep, Keep>(sql, (prof, keep) =>
             {
                 keep.Creator = prof;
@@ -103,7 +104,8 @@ namespace Keeper.Repositories
             a.*
             FROM keeps k
             JOIN accounts a ON a.id = k.creatorId
-            WHERE creatorId = @id";
+            WHERE creatorId = @id
+            ORDER BY k.createdAt DESC;";
 
             return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
             {

@@ -26,7 +26,7 @@
       <input class="m-1" v-model="editable.isPrivate" type="checkbox" />
       <label class="fs-5"> Private?</label>
     </div>
-    <button class="btn btn-primary">Save Changes!</button>
+    <button class="btn btn-primary">Create Vault!</button>
   </form>
 </template>
 
