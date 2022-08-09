@@ -6,7 +6,7 @@
         <button
           v-show="vault.creatorId == account.id"
           @click="deleteVault"
-          class="btn btn-secondary me-3"
+          class="btn btn-danger me-3"
         >
           Delete Vault
         </button>
