@@ -7,6 +7,14 @@
         :src="profile.picture"
         :title="'Edit Account'"
         alt=""
+        v-if="profile.id != account.id"
+      />
+      <img
+        class="rounded m-3 img-fluid selectable logo"
+        :src="profile.picture"
+        :title="'Edit Account'"
+        alt=""
+        v-else
         @click="editAccount"
         data-bs-toggle="modal"
         data-bs-target="#editAccount-form"

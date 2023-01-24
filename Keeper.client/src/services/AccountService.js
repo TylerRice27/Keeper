@@ -19,9 +19,12 @@ class AccountService {
       const res = await api.put('/account', accountData)
       logger.log(res.data)
       AppState.account = res.data
+      AppState.activeProfile = res.data
+
 
     } catch (error) {
-
+      logger.error(error)
+      Pop.toast(error.message, 'error')
 
     }
 

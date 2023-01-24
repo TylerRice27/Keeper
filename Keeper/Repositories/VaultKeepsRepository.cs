@@ -18,7 +18,7 @@ namespace Keeper.Repositories
         internal VaultKeep Create(VaultKeep vaultKeepData)
         {
             string sql = @"
-            INSERT INTO vaultkeeps
+            INSERT INTO trvaultkeeps
             (keepId, vaultId, creatorId)
             VALUES
             (@KeepId, @VaultId, @CreatorId);
