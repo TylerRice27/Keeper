@@ -134,5 +134,18 @@ namespace Keeper.Repositories
             string sql = "DELETE FROM trkeeps WHERE id = @id LIMIT 1";
             _db.Execute(sql, new { id });
         }
+
+        internal void decreaseKept(Keep keep)
+        {
+            string sql = @"
+            UPDATE trkeeps
+            SET 
+
+            kept = @Kept - 1
+
+            WHERE id =@Id;";
+            _db.Execute(sql, keep);
+
+        }
     }
 }
