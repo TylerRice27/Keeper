@@ -18,7 +18,7 @@ namespace Keeper.Repositories
         internal Keep Create(Keep keepData)
         {
             string sql = @"
-          INSERT INTO keeps
+          INSERT INTO trkeeps
           (name, description, img, creatorId)
           VALUES
           (@Name, @Description, @Img, @CreatorId);  
@@ -32,7 +32,7 @@ namespace Keeper.Repositories
         internal void increaseKept(Keep keep)
         {
             string sql = @"
-            UPDATE keeps
+            UPDATE trkeeps
             SET 
 
             kept = @Kept + 1
@@ -46,7 +46,7 @@ namespace Keeper.Repositories
         internal void increaseView(Keep keep)
         {
             string sql = @"
-            UPDATE keeps
+            UPDATE trkeeps
             SET 
 
             views = @Views + 1
@@ -67,7 +67,7 @@ namespace Keeper.Repositories
             SELECT
             a.*,
             k.*
-            FROM keeps k
+            FROM trkeeps k
             JOIN accounts a ON a.id = k.creatorId
             WHERE k.id = @id"
             ;
@@ -87,7 +87,7 @@ namespace Keeper.Repositories
             string sql = @"SELECT 
             a.*,
             k.* 
-            FROM keeps k
+            FROM trkeeps k
             JOIN accounts a ON a.id = k.creatorId
             ORDER BY k.createdAt DESC;";
             return _db.Query<Profile, Keep, Keep>(sql, (prof, keep) =>
@@ -102,7 +102,7 @@ namespace Keeper.Repositories
             string sql = @"
             SELECT k.*,
             a.*
-            FROM keeps k
+            FROM trkeeps k
             JOIN accounts a ON a.id = k.creatorId
             WHERE creatorId = @id
             ORDER BY k.createdAt DESC;";
@@ -118,7 +118,7 @@ namespace Keeper.Repositories
         internal void Edit(Keep original)
         {
             string sql = @"
-            UPDATE keeps
+            UPDATE trkeeps
             SET 
             name = @Name,
             views = @Views,
@@ -131,7 +131,7 @@ namespace Keeper.Repositories
 
         internal void Delete(int id)
         {
-            string sql = "DELETE FROM keeps WHERE id = @id LIMIT 1";
+            string sql = "DELETE FROM trkeeps WHERE id = @id LIMIT 1";
             _db.Execute(sql, new { id });
         }
     }
