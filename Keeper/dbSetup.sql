@@ -9,25 +9,25 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
-    IF NOT EXISTS vaults(
+    IF NOT EXISTS trvaults(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         name VARCHAR(255) NOT NULL,
         img VARCHAR(255) NOT NULL,
-        description VARCHAR(255) NOT NULL,
+        description VARCHAR(500) NOT NULL,
         isPrivate TINYINT NOT NULL DEFAULT 0,
         creatorId VARCHAR(255) NOT NULL,
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
-    IF NOT EXISTS keeps(
+    IF NOT EXISTS trkeeps(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         name VARCHAR(255) NOT NULL,
-        description VARCHAR(255) NOT NULL,
+        description VARCHAR(500) NOT NULL,
         img VARCHAR(255) NOT NULL,
         views INT NOT NULL DEFAULT 0,
         kept INT NOT NULL DEFAULT 0,
@@ -36,13 +36,13 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
-    IF NOT EXISTS vaultkeeps(
+    IF NOT EXISTS trvaultkeeps(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         keepId INT NOT NULL,
         vaultId INT NOT NULL,
         creatorId VARCHAR(255) NOT NULL,
-        FOREIGN KEY (keepId) REFERENCES keeps(id) ON DELETE CASCADE,
-        FOREIGN KEY (vaultId) REFERENCES vaults(id) ON DELETE CASCADE
+        FOREIGN KEY (keepId) REFERENCES trkeeps(id) ON DELETE CASCADE,
+        FOREIGN KEY (vaultId) REFERENCES trvaults(id) ON DELETE CASCADE
     )

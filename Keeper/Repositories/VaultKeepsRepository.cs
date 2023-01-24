@@ -18,7 +18,7 @@ namespace Keeper.Repositories
         internal VaultKeep Create(VaultKeep vaultKeepData)
         {
             string sql = @"
-            INSERT INTO vaultkeeps
+            INSERT INTO trvaultkeeps
             (keepId, vaultId, creatorId)
             VALUES
             (@KeepId, @VaultId, @CreatorId);
@@ -38,8 +38,8 @@ namespace Keeper.Repositories
             a.*,
             k.*,
             vk.id AS VaultKeepId
-            FROM vaultkeeps vk
-            JOIN keeps k on k.id = vk.keepId
+            FROM trvaultkeeps vk
+            JOIN trkeeps k on k.id = vk.keepId
             JOIN accounts a ON a.id = vk.creatorId
             WHERE vk.vaultId = @id
             ";
@@ -51,7 +51,7 @@ namespace Keeper.Repositories
         }
         internal VaultKeep Get(int id)
         {
-            string sql = "SELECT * FROM vaultkeeps WHERE id = @id";
+            string sql = "SELECT * FROM trvaultkeeps WHERE id = @id";
             return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
         }
 
@@ -66,7 +66,7 @@ namespace Keeper.Repositories
 
         internal void Delete(int id)
         {
-            string sql = "DELETE FROM vaultkeeps WHERE id = @Id LIMIT 1";
+            string sql = "DELETE FROM trvaultkeeps WHERE id = @Id LIMIT 1";
             _db.Execute(sql, new { id });
         }
     }

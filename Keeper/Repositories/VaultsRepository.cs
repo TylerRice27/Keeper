@@ -22,7 +22,7 @@ namespace Keeper.Repositories
             SELECT
             a.*,
             v.*
-            FROM vaults v
+            FROM trvaults v
             JOIN accounts a ON a.id = v.creatorId;
             ORDER BY v.createdAt DESC; ";
 
@@ -40,7 +40,7 @@ namespace Keeper.Repositories
             SELECT
             a.*,
             v.*
-            FROM vaults v
+            FROM trvaults v
             JOIN accounts a ON a.id = v.creatorId
             WHERE v.id = @id";
 
@@ -56,7 +56,7 @@ namespace Keeper.Repositories
         internal Vault Create(Vault vaultData)
         {
             string sql = @"
-           INSERT INTO vaults
+           INSERT INTO trvaults
            (name, description, isPrivate, img, creatorId)
            VALUES
            (@Name, @Description, @IsPrivate, @Img, @CreatorId);
@@ -69,7 +69,7 @@ namespace Keeper.Repositories
         internal void Edit(Vault original)
         {
             string sql = @"
-            UPDATE vaults
+            UPDATE trvaults
             SET
             name = @Name,
             description = @Description,
@@ -84,7 +84,7 @@ namespace Keeper.Repositories
             string sql = @"
             SELECT v.*,
             a.*
-            FROM vaults v
+            FROM trvaults v
             JOIN accounts a ON a.id = v.creatorId
             WHERE creatorId = @id
             ORDER BY v.createdAt DESC; ";
@@ -102,7 +102,7 @@ namespace Keeper.Repositories
             SELECT
             v.*,
             a.*
-            FROM vaults v
+            FROM trvaults v
             JOIN accounts a ON a.id = v.creatorId
             WHERE v.creatorId = @creatorId
             ORDER BY v.createdAt DESC;
@@ -117,7 +117,7 @@ namespace Keeper.Repositories
 
         internal void Delete(int id)
         {
-            string sql = "DELETE FROM vaults WHERE id = @id LIMIT 1";
+            string sql = "DELETE FROM trvaults WHERE id = @id LIMIT 1";
             _db.Execute(sql, new { id });
         }
     }

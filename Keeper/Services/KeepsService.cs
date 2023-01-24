@@ -26,7 +26,7 @@ namespace Keeper.Services
             return keeps;
         }
 
-        internal Keep Get(int id)
+        internal Keep Get(int id, string userId)
         {
             Keep foundKeep = _repo.Get(id);
 
@@ -34,14 +34,17 @@ namespace Keeper.Services
             {
                 throw new Exception("Invaild Id");
             }
-            _repo.increaseView(foundKeep);
-            // foundKeep.Views++;
+            // if (foundKeep.CreatorId != userId)
+            // {
+            //     _repo.increaseView(foundKeep);
+
+            // }
 
             return foundKeep;
         }
         internal Keep Edit(Keep keep)
         {
-            Keep original = Get(keep.Id);
+            Keep original = Get(keep.Id, keep.CreatorId);
             if (keep.CreatorId != original.CreatorId)
             {
                 throw new Exception("You can not edit this Keep, You don't own this Keep");
@@ -67,7 +70,7 @@ namespace Keeper.Services
 
         internal void Delete(int id, string userId)
         {
-            Keep foundKeep = Get(id);
+            Keep foundKeep = Get(id, userId);
             if (userId != foundKeep.CreatorId)
             {
                 throw new Exception("You can not delete this keep");

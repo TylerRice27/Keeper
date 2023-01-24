@@ -67,12 +67,14 @@ namespace Keeper.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Keep> Get(int id)
+        public async Task<ActionResult<Keep>> GetAsync(int id)
         {
 
             try
             {
-                Keep keep = _ks.Get(id);
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+
+                Keep keep = _ks.Get(id, userInfo?.Id);
                 return Ok(keep);
             }
             catch (Exception e)
