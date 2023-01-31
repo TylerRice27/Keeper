@@ -25,8 +25,8 @@ class VaultKeepsService {
 
     async createVaultKeep(keepId, vaultId) {
         let data = {
-            vaultId: vaultId,
-            keepId: keepId
+            keepId: keepId,
+            vaultId: vaultId
         }
         const res = await api.post('api/vaultkeeps', data)
         logger.log('Create keep in a Vault', res.data)
