@@ -77,17 +77,11 @@ export default {
 
 
 <style lang="scss" scoped>
-// .card {
-//   height: 30vh;
-// }
-
 .profile-pic {
   height: 38px;
   width: 38px;
 }
 .kep-hover {
-  //   display: flex;
-  //   align-items: f;
   transition: all 0.4s ease-in-out;
 }
 .keep-text {

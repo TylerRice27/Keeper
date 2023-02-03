@@ -3,7 +3,7 @@
     <!-- <div class="row"> -->
     <div class="d-flex col-md-12 mt-4">
       <img
-        class="rounded m-3 img-fluid selectable logo"
+        class="rounded m-3 img-fluid logo"
         :src="profile.picture"
         :title="'Edit Account'"
         alt=""

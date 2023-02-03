@@ -100,7 +100,6 @@ import Pop from '../utils/Pop.js'
 import { useRoute } from 'vue-router'
 import { keepsService } from '../services/KeepsService.js'
 import { vaultKeepsService } from '../services/VaultKeepsService'
-import { accountService } from '../services/AccountService.js'
 import { Modal } from 'bootstrap'
 import { router } from '../router.js'
 
